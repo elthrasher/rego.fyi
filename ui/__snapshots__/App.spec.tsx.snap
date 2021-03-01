@@ -1,0 +1,351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a message 1`] = `
+<div
+  className="MuiContainer-root MuiContainer-maxWidthLg"
+>
+  <div
+    className="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3"
+      >
+        <h1>
+          rego.fyi
+        </h1>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-9"
+      />
+    </div>
+  </div>
+  <div
+    className="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <div
+          className="MuiFormControl-root"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+            data-shrink={true}
+          >
+            Method
+          </label>
+          <div
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+            onClick={[Function]}
+          >
+            <div
+              aria-haspopup="listbox"
+              className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              GET
+            </div>
+            <input
+              aria-hidden={true}
+              className="MuiSelect-nativeInput"
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value="GET"
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <div
+          className="MuiFormControl-root"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root"
+          >
+            <label
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+              data-shrink={true}
+            >
+              Resource
+            </label>
+            <div
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input MuiInput-input"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="text"
+                value="/hello"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <fieldset
+      className="MuiFormControl-root MuiFormControl-fullWidth"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          data-shrink={true}
+          htmlFor="User info such as a JWT or session"
+          id="User info such as a JWT or session-label"
+        >
+          User info such as a JWT or session
+        </label>
+        <div
+          className="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
+          onClick={[Function]}
+        >
+          <textarea
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+            disabled={false}
+            id="User info such as a JWT or session"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            rows={1}
+            style={
+              Object {
+                "height": undefined,
+                "overflow": null,
+              }
+            }
+            value="{\\"role_name\\":\\"Admin\\"}"
+          />
+          <textarea
+            aria-hidden={true}
+            className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+            readOnly={true}
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "hidden",
+                "position": "absolute",
+                "top": 0,
+                "transform": "translateZ(0)",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex={-1}
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div
+    className="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <fieldset
+      className="MuiFormControl-root MuiFormControl-fullWidth"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          data-shrink={true}
+          htmlFor="Rego policy loaded from disk or other storage"
+          id="Rego policy loaded from disk or other storage-label"
+        >
+          Rego policy loaded from disk or other storage
+        </label>
+        <div
+          className="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
+          onClick={[Function]}
+        >
+          <textarea
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+            disabled={false}
+            id="Rego policy loaded from disk or other storage"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            rows={1}
+            style={
+              Object {
+                "height": undefined,
+                "overflow": null,
+              }
+            }
+            value="package rolemapper
+
+import data.roles
+
+default allow = false
+
+allow {
+    role_has_permission[input.role_name]
+}
+
+role_has_permission[role_name] {
+    r = roles[_]
+    r.name = role_name
+    match_with_wildcard(r.operations, input.operation)
+    match_with_wildcard(r.resources, input.resource)
+}
+match_with_wildcard(allowed, value) {
+    allowed[_] = \\"*\\"
+}
+match_with_wildcard(allowed, value) {
+    allowed[_] = value
+}"
+          />
+          <textarea
+            aria-hidden={true}
+            className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+            readOnly={true}
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "hidden",
+                "position": "absolute",
+                "top": 0,
+                "transform": "translateZ(0)",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex={-1}
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div
+    className="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <fieldset
+      className="MuiFormControl-root MuiFormControl-fullWidth"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+          data-shrink={true}
+          htmlFor="Data loaded from disk or other storage for making policy decisions"
+          id="Data loaded from disk or other storage for making policy decisions-label"
+        >
+          Data loaded from disk or other storage for making policy decisions
+        </label>
+        <div
+          className="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
+          onClick={[Function]}
+        >
+          <textarea
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+            disabled={false}
+            id="Data loaded from disk or other storage for making policy decisions"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            rows={1}
+            style={
+              Object {
+                "height": undefined,
+                "overflow": null,
+              }
+            }
+            value="{\\"roles\\":[{\\"resources\\":[\\"/hello\\"],\\"operations\\":[\\"GET\\"],\\"name\\":\\"Admin\\"}]}"
+          />
+          <textarea
+            aria-hidden={true}
+            className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+            readOnly={true}
+            style={
+              Object {
+                "height": 0,
+                "left": 0,
+                "overflow": "hidden",
+                "position": "absolute",
+                "top": 0,
+                "transform": "translateZ(0)",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex={-1}
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <button
+    className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label"
+    >
+      Send Request
+    </span>
+  </button>
+</div>
+`;
