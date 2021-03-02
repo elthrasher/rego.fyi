@@ -12,11 +12,7 @@ Object {
             Object {
               "Ref": "RegoFyiApiC9E5D65C",
             },
-            ".execute-api.",
-            Object {
-              "Ref": "AWS::Region",
-            },
-            ".",
+            ".execute-api.us-east-1.",
             Object {
               "Ref": "AWS::URLSuffix",
             },
@@ -32,6 +28,28 @@ Object {
   },
   "Parameters": Any<Object>,
   "Resources": Object {
+    "ApiARecordFA826994": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": Object {
+            "Fn::GetAtt": Array [
+              "RegoFyiApiApiDomain39F42A0B",
+              "DistributionDomainName",
+            ],
+          },
+          "HostedZoneId": Object {
+            "Fn::GetAtt": Array [
+              "RegoFyiApiApiDomain39F42A0B",
+              "DistributionHostedZoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "api.rego.fyi.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
     "AuthZFun2B67BA45": Object {
       "DependsOn": Array [
         "AuthZFunServiceRoleFC1807CF",
@@ -49,7 +67,7 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "AuthZFunAuthorizerPermissionsC492443D": Object {
+    "AuthZFunApiTestStackAuthorizer82FEC614PermissionsE0CCE651": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -67,15 +85,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -131,11 +141,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":apigateway:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":lambda:path/2015-03-31/functions/",
+              ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
               Object {
                 "Fn::GetAtt": Array [
                   "AuthZFun2B67BA45",
@@ -147,7 +153,7 @@ Object {
           ],
         },
         "IdentitySource": "",
-        "Name": "Authorizer",
+        "Name": "ApiTestStackAuthorizer82FEC614",
         "RestApiId": Object {
           "Ref": "RegoFyiApiC9E5D65C",
         },
@@ -222,6 +228,35 @@ Object {
       },
       "Type": "AWS::ApiGateway::Account",
     },
+    "RegoFyiApiApiDomain39F42A0B": Object {
+      "Properties": Object {
+        "CertificateArn": Object {
+          "Ref": "WebsiteCertD0D41D26",
+        },
+        "DomainName": "api.rego.fyi",
+        "EndpointConfiguration": Object {
+          "Types": Array [
+            "EDGE",
+          ],
+        },
+        "SecurityPolicy": "TLS_1_2",
+      },
+      "Type": "AWS::ApiGateway::DomainName",
+    },
+    "RegoFyiApiApiDomainMapApiTestStackRegoFyiApi55A50515A1BFF373": Object {
+      "Properties": Object {
+        "DomainName": Object {
+          "Ref": "RegoFyiApiApiDomain39F42A0B",
+        },
+        "RestApiId": Object {
+          "Ref": "RegoFyiApiC9E5D65C",
+        },
+        "Stage": Object {
+          "Ref": "RegoFyiApiDeploymentStageprod3896E9EC",
+        },
+      },
+      "Type": "AWS::ApiGateway::BasePathMapping",
+    },
     "RegoFyiApiC9E5D65C": Object {
       "Properties": Object {
         "Name": "RegoFyiApi",
@@ -259,7 +294,7 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "RegoFyiApiDeployment7CE698883a368da4f0ac328c7709bd0de79e3a86": Object {
+    "RegoFyiApiDeployment7CE69888f2eb72145333f00fd68c6db9d2a76548": Object {
       "DependsOn": Array [
         "RegoFyiApiproxydelete2A7C1609",
         "RegoFyiApiproxyget6D58FD76",
@@ -286,7 +321,7 @@ Object {
     "RegoFyiApiDeploymentStageprod3896E9EC": Object {
       "Properties": Object {
         "DeploymentId": Object {
-          "Ref": "RegoFyiApiDeployment7CE698883a368da4f0ac328c7709bd0de79e3a86",
+          "Ref": "RegoFyiApiDeployment7CE69888f2eb72145333f00fd68c6db9d2a76548",
         },
         "MethodSettings": Array [
           Object {
@@ -365,11 +400,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -403,7 +434,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApideleteApiPermissionRegoFyiApiDELETE3BEE6394": Object {
+    "RegoFyiApideleteApiPermissionApiTestStackRegoFyiApi55A50515DELETEF20F0F0C": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -421,15 +452,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -444,7 +467,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApideleteApiPermissionTestRegoFyiApiDELETE9499FE94": Object {
+    "RegoFyiApideleteApiPermissionTestApiTestStackRegoFyiApi55A50515DELETEEEBA6072": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -462,15 +485,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -499,11 +514,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -537,7 +548,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApigetApiPermissionRegoFyiApiGETF764FD3A": Object {
+    "RegoFyiApigetApiPermissionApiTestStackRegoFyiApi55A50515GETB1858662": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -555,15 +566,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -578,7 +581,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApigetApiPermissionTestRegoFyiApiGET794B56CC": Object {
+    "RegoFyiApigetApiPermissionTestApiTestStackRegoFyiApi55A50515GET8D3C6F0A": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -596,15 +599,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -633,11 +628,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -671,7 +662,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApipatchApiPermissionRegoFyiApiPATCH8050C77D": Object {
+    "RegoFyiApipatchApiPermissionApiTestStackRegoFyiApi55A50515PATCHC45AFE89": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -689,15 +680,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -712,7 +695,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApipatchApiPermissionTestRegoFyiApiPATCHF813F8D5": Object {
+    "RegoFyiApipatchApiPermissionTestApiTestStackRegoFyiApi55A50515PATCHE8E610A6": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -730,15 +713,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -749,7 +724,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApipostApiPermissionRegoFyiApiPOSTBBAA8EB3": Object {
+    "RegoFyiApipostApiPermissionApiTestStackRegoFyiApi55A50515POST0B0DBEDF": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -767,15 +742,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -790,7 +757,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApipostApiPermissionTestRegoFyiApiPOSTAACCEB76": Object {
+    "RegoFyiApipostApiPermissionTestApiTestStackRegoFyiApi55A50515POSTD69B2638": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -808,15 +775,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -845,11 +804,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -957,11 +912,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -992,7 +943,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApiproxydeleteApiPermissionRegoFyiApiDELETEproxy46A1598B": Object {
+    "RegoFyiApiproxydeleteApiPermissionApiTestStackRegoFyiApi55A50515DELETEproxy6FC2BEE8": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1010,15 +961,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1033,7 +976,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApiproxydeleteApiPermissionTestRegoFyiApiDELETEproxy53299ABA": Object {
+    "RegoFyiApiproxydeleteApiPermissionTestApiTestStackRegoFyiApi55A50515DELETEproxyE44522A8": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1051,15 +994,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1088,11 +1023,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -1123,7 +1054,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApiproxygetApiPermissionRegoFyiApiGETproxyAAEF628A": Object {
+    "RegoFyiApiproxygetApiPermissionApiTestStackRegoFyiApi55A50515GETproxy54CD1CCC": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1141,15 +1072,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1164,7 +1087,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApiproxygetApiPermissionTestRegoFyiApiGETproxy2F31CE23": Object {
+    "RegoFyiApiproxygetApiPermissionTestApiTestStackRegoFyiApi55A50515GETproxy1968B63E": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1182,15 +1105,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1219,11 +1134,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -1254,7 +1165,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApiproxypatchApiPermissionRegoFyiApiPATCHproxy68E4B75D": Object {
+    "RegoFyiApiproxypatchApiPermissionApiTestStackRegoFyiApi55A50515PATCHproxyA466C991": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1272,15 +1183,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1295,7 +1198,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApiproxypatchApiPermissionTestRegoFyiApiPATCHproxyE32688E1": Object {
+    "RegoFyiApiproxypatchApiPermissionTestApiTestStackRegoFyiApi55A50515PATCHproxyDBC478C7": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1313,15 +1216,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1350,11 +1245,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -1385,7 +1276,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApiproxypostApiPermissionRegoFyiApiPOSTproxy238027E9": Object {
+    "RegoFyiApiproxypostApiPermissionApiTestStackRegoFyiApi55A50515POSTproxyF72637B7": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1403,15 +1294,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1426,7 +1309,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApiproxypostApiPermissionTestRegoFyiApiPOSTproxyC33CFA91": Object {
+    "RegoFyiApiproxypostApiPermissionTestApiTestStackRegoFyiApi55A50515POSTproxy1C8286AC": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1444,15 +1327,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1481,11 +1356,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -1516,7 +1387,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApiproxyputApiPermissionRegoFyiApiPUTproxy6A867257": Object {
+    "RegoFyiApiproxyputApiPermissionApiTestStackRegoFyiApi55A50515PUTproxy7557345D": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1534,15 +1405,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1557,7 +1420,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApiproxyputApiPermissionTestRegoFyiApiPUTproxyDA7EC023": Object {
+    "RegoFyiApiproxyputApiPermissionTestApiTestStackRegoFyiApi55A50515PUTproxyAD1A66DF": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1575,15 +1438,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1612,11 +1467,7 @@ Object {
                 Object {
                   "Ref": "AWS::Partition",
                 },
-                ":apigateway:",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
                 Object {
                   "Fn::GetAtt": Array [
                     "LambdalithFnE6677028",
@@ -1650,7 +1501,7 @@ Object {
       },
       "Type": "AWS::ApiGateway::Method",
     },
-    "RegoFyiApiputApiPermissionRegoFyiApiPUTD5CDC852": Object {
+    "RegoFyiApiputApiPermissionApiTestStackRegoFyiApi55A50515PUT07C20EFC": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1668,15 +1519,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1691,7 +1534,7 @@ Object {
       },
       "Type": "AWS::Lambda::Permission",
     },
-    "RegoFyiApiputApiPermissionTestRegoFyiApiPUT650D7324": Object {
+    "RegoFyiApiputApiPermissionTestApiTestStackRegoFyiApi55A50515PUT217502A8": Object {
       "Properties": Object {
         "Action": "lambda:InvokeFunction",
         "FunctionName": Object {
@@ -1709,15 +1552,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":execute-api:",
-              Object {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
+              ":execute-api:us-east-1:123456789:",
               Object {
                 "Ref": "RegoFyiApiC9E5D65C",
               },
@@ -1727,6 +1562,26 @@ Object {
         },
       },
       "Type": "AWS::Lambda::Permission",
+    },
+    "WebsiteCertD0D41D26": Object {
+      "Properties": Object {
+        "DomainName": "rego.fyi",
+        "DomainValidationOptions": Array [
+          Object {
+            "DomainName": "rego.fyi",
+            "HostedZoneId": "DUMMY",
+          },
+          Object {
+            "DomainName": "api.rego.fyi",
+            "HostedZoneId": "DUMMY",
+          },
+        ],
+        "SubjectAlternativeNames": Array [
+          "api.rego.fyi",
+        ],
+        "ValidationMethod": "DNS",
+      },
+      "Type": "AWS::CertificateManager::Certificate",
     },
   },
 }

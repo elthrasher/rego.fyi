@@ -71,6 +71,28 @@ Object {
       },
       "Type": "AWS::Route53::RecordSet",
     },
+    "ApiARecordFA826994": Object {
+      "Properties": Object {
+        "AliasTarget": Object {
+          "DNSName": Object {
+            "Fn::GetAtt": Array [
+              "RegoFyiApiApiDomain39F42A0B",
+              "DistributionDomainName",
+            ],
+          },
+          "HostedZoneId": Object {
+            "Fn::GetAtt": Array [
+              "RegoFyiApiApiDomain39F42A0B",
+              "DistributionHostedZoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "api.rego.fyi.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
     "AuthZFun2B67BA45": Object {
       "DependsOn": Array [
         "AuthZFunServiceRoleFC1807CF",
@@ -369,10 +391,7 @@ Object {
           ],
           "ViewerCertificate": Object {
             "AcmCertificateArn": Object {
-              "Fn::GetAtt": Array [
-                "WebsiteCertCertificateRequestorResourceC88F20B3",
-                "Arn",
-              ],
+              "Ref": "WebsiteCertD0D41D26",
             },
             "MinimumProtocolVersion": "TLSv1.2_2019",
             "SslSupportMethod": "sni-only",
@@ -447,6 +466,35 @@ Object {
         },
       },
       "Type": "AWS::ApiGateway::Account",
+    },
+    "RegoFyiApiApiDomain39F42A0B": Object {
+      "Properties": Object {
+        "CertificateArn": Object {
+          "Ref": "WebsiteCertD0D41D26",
+        },
+        "DomainName": "api.rego.fyi",
+        "EndpointConfiguration": Object {
+          "Types": Array [
+            "EDGE",
+          ],
+        },
+        "SecurityPolicy": "TLS_1_2",
+      },
+      "Type": "AWS::ApiGateway::DomainName",
+    },
+    "RegoFyiApiApiDomainMapTestStackRegoFyiApiD38E295DC78CA3D8": Object {
+      "Properties": Object {
+        "DomainName": Object {
+          "Ref": "RegoFyiApiApiDomain39F42A0B",
+        },
+        "RestApiId": Object {
+          "Ref": "RegoFyiApiC9E5D65C",
+        },
+        "Stage": Object {
+          "Ref": "RegoFyiApiDeploymentStageprod3896E9EC",
+        },
+      },
+      "Type": "AWS::ApiGateway::BasePathMapping",
     },
     "RegoFyiApiC9E5D65C": Object {
       "Properties": Object {
@@ -1854,116 +1902,25 @@ Object {
       },
       "Type": "AWS::S3::BucketPolicy",
     },
-    "WebsiteCertCertificateRequestorFunction6B9B1618": Object {
-      "DependsOn": Array [
-        "WebsiteCertCertificateRequestorFunctionServiceRoleDefaultPolicy022C2764",
-        "WebsiteCertCertificateRequestorFunctionServiceRoleA1E45DDC",
-      ],
-      "Properties": Object {
-        "Code": Any<Object>,
-        "Handler": "index.certificateRequestHandler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "WebsiteCertCertificateRequestorFunctionServiceRoleA1E45DDC",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs10.x",
-        "Timeout": 900,
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "WebsiteCertCertificateRequestorFunctionServiceRoleA1E45DDC": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "WebsiteCertCertificateRequestorFunctionServiceRoleDefaultPolicy022C2764": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
-                "acm:RequestCertificate",
-                "acm:DescribeCertificate",
-                "acm:DeleteCertificate",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "route53:GetChange",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "route53:changeResourceRecordSets",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":route53:::hostedzone/DUMMY",
-                  ],
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "WebsiteCertCertificateRequestorFunctionServiceRoleDefaultPolicy022C2764",
-        "Roles": Array [
-          Object {
-            "Ref": "WebsiteCertCertificateRequestorFunctionServiceRoleA1E45DDC",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "WebsiteCertCertificateRequestorResourceC88F20B3": Object {
-      "DeletionPolicy": "Delete",
+    "WebsiteCertD0D41D26": Object {
       "Properties": Object {
         "DomainName": "rego.fyi",
-        "HostedZoneId": "DUMMY",
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "WebsiteCertCertificateRequestorFunction6B9B1618",
-            "Arn",
-          ],
-        },
+        "DomainValidationOptions": Array [
+          Object {
+            "DomainName": "rego.fyi",
+            "HostedZoneId": "DUMMY",
+          },
+          Object {
+            "DomainName": "api.rego.fyi",
+            "HostedZoneId": "DUMMY",
+          },
+        ],
+        "SubjectAlternativeNames": Array [
+          "api.rego.fyi",
+        ],
+        "ValidationMethod": "DNS",
       },
-      "Type": "AWS::CloudFormation::CustomResource",
-      "UpdateReplacePolicy": "Delete",
+      "Type": "AWS::CertificateManager::Certificate",
     },
   },
 }
