@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 
-const baseUrl = 'https://4m2h05fl9h.execute-api.us-east-1.amazonaws.com/prod';
+const baseUrl = 'https://api.rego.fyi';
 
 const dataDefault = JSON.stringify({
   requests: [{ methods: ['GET'], resources: ['/orders'] }],

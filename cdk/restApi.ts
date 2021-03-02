@@ -1,8 +1,16 @@
-import { LambdaIntegration, RequestAuthorizer, RestApi } from '@aws-cdk/aws-apigateway';
+import { EndpointType, LambdaIntegration, RequestAuthorizer, RestApi, SecurityPolicy } from '@aws-cdk/aws-apigateway';
+import { ICertificate } from '@aws-cdk/aws-certificatemanager';
 import { Function as LambdaFunction } from '@aws-cdk/aws-lambda';
+import { ARecord, IHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
+import { ApiGateway } from '@aws-cdk/aws-route53-targets';
 import { Duration, Stack } from '@aws-cdk/core';
 
-export const createRestApi = (stack: Stack, fns: { [fnName: string]: LambdaFunction }): void => {
+export const createRestApi = (
+  stack: Stack,
+  fns: { [fnName: string]: LambdaFunction },
+  certificate: ICertificate,
+  hostedZone: IHostedZone,
+): void => {
   const authorizer = new RequestAuthorizer(stack, 'Authorizer', {
     handler: fns.authorizer,
     identitySources: [],
@@ -49,4 +57,19 @@ export const createRestApi = (stack: Stack, fns: { [fnName: string]: LambdaFunct
   proxyResource.addMethod('patch', undefined, proxyMethodOptions);
   proxyResource.addMethod('post', undefined, proxyMethodOptions);
   proxyResource.addMethod('put', undefined, proxyMethodOptions);
+
+  const domainName = 'api.rego.fyi';
+
+  restApi.addDomainName(`ApiDomain`, {
+    certificate,
+    domainName,
+    endpointType: EndpointType.EDGE,
+    securityPolicy: SecurityPolicy.TLS_1_2,
+  });
+
+  new ARecord(stack, 'ApiARecord', {
+    recordName: domainName,
+    target: RecordTarget.fromAlias(new ApiGateway(restApi)),
+    zone: hostedZone,
+  });
 };
