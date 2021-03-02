@@ -42,7 +42,7 @@ const tokenDefault = JSON.stringify({
   subscriptions: ['newsletter'],
 });
 
-interface Payloads {
+export interface Payloads {
   data: string;
   rego: string;
   token: string;

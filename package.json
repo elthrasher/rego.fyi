@@ -14,7 +14,9 @@
     "pretest": "npm run lint",
     "start": "npm run clean && ts-node --files esbuild.ts",
     "synth": "cdk synth",
-    "test": "jest --coverage"
+    "test": "npm run test:go && npm run test:ts",
+    "test:go": "cd fns/go && go test && cd ../..",
+    "test:ts": "jest --coverage"
   },
   "keywords": [
     "esbuild",
@@ -30,16 +32,17 @@
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.91.0",
+    "@aws-cdk/aws-iam": "1.91.0",
     "@types/aws-lambda": "^8.10.72",
-    "@types/fs-extra": "^9.0.7",
+    "@types/fs-extra": "^9.0.8",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.31",
     "@types/react-dom": "^17.0.1",
     "@types/react-test-renderer": "^17.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.11.1",
-    "@typescript-eslint/parser": "^4.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
     "aws-cdk": "1.91.0",
-    "esbuild": "^0.8.28",
+    "esbuild": "^0.8.54",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.0",

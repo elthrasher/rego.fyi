@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lambdalith tests should return a response 1`] = `
+Object {
+  "body": "{\\"httpMethod\\":\\"GET\\",\\"path\\":\\"/orders\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Origin": "https://rego.fyi",
+  },
+  "statusCode": 200,
+}
+`;

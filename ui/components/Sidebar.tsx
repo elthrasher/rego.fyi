@@ -27,7 +27,7 @@ export const Sidebar = (): JSX.Element => (
           <Typography>
             I was interested to see if I could use rego in a serverless environment. I put together a demo that involved
             using a REST client, copying tokens around and stuff like that. I decided my demo was terrible and resolved
-            to do something better.
+            to do something better, this, which is at least better than that demo.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -40,8 +40,8 @@ export const Sidebar = (): JSX.Element => (
         <AccordionDetails>
           <Typography>
             <p>
-              Edit any of the three text blocks to the right and select an HTTP method and path. The top and bottom
-              should have JSON data and are validated. The middle one is written in{' '}
+              Edit any of the three text blocks and select an HTTP method and path. The top and bottom should have JSON
+              data and are validated. The middle one is written in{' '}
               <Link href="https://www.openpolicyagent.org/docs/latest/policy-language/" rel="noopener" target="_blank">
                 rego
               </Link>{' '}

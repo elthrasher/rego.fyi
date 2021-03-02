@@ -6,7 +6,7 @@ import { join } from 'path';
 
 const getAuthorizer = (stack: Stack): LambdaFunction => {
   const execOptions: ExecSyncOptions = { stdio: ['ignore', process.stderr, 'inherit'] };
-  const goPath = join(__dirname, '../lambda');
+  const goPath = join(__dirname, '../fns/go');
   return new LambdaFunction(stack, 'AuthZFun', {
     code: Code.fromAsset(goPath, {
       bundling: {
@@ -16,7 +16,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
           tryBundle(outputDir: string) {
             try {
               execSync('go version', execOptions);
-            } catch {
+            } catch /* istanbul ignore next */ {
               return false;
             }
             execSync(`GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o ${join(outputDir, 'main')}`, {
@@ -35,7 +35,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
 
 const getLambdalith = (stack: Stack): LambdaFunction =>
   new NodejsFunction(stack, 'LambdalithFn', {
-    entry: `${__dirname}/../lambda/lambdalith.ts`,
+    entry: `${__dirname}/../fns/ts/lambdalith.ts`,
     runtime: Runtime.NODEJS_14_X,
   });
 

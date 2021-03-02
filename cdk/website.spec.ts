@@ -1,13 +1,13 @@
 import { SynthUtils } from '@aws-cdk/assert';
-import { App } from '@aws-cdk/core';
+import { App, Stack } from '@aws-cdk/core';
 
-import { RegoFyiStack } from './rego.fyi-stack';
+import { createWebsite } from './website';
 
-describe('CDK UI Stack', () => {
-  test('Snapshot test', () => {
+describe('website builds', () => {
+  test('react build', () => {
     const app = new App();
-    const stack = new RegoFyiStack(app, 'TestStack', { env: { account: '123456789', region: 'us-east-1' } });
-
+    const stack = new Stack(app, 'WebTestStack', { env: { account: '123456789', region: 'us-east-1' } });
+    createWebsite(stack);
     const cfn = SynthUtils.toCloudFormation(stack);
     const resources = cfn.Resources;
     const matchObject: { Parameters: Record<string, unknown>; Resources: Record<string, unknown> } = {
@@ -16,18 +16,6 @@ describe('CDK UI Stack', () => {
     };
     Object.keys(resources).forEach((res) => {
       switch (resources[res].Type) {
-        case 'AWS::Lambda::Function':
-          matchObject.Resources[res] = {
-            Properties: { Code: expect.any(Object) },
-          };
-          break;
-        case 'AWS::Lambda::LayerVersion':
-          matchObject.Resources[res] = {
-            Properties: {
-              Content: expect.any(Object),
-            },
-          };
-          break;
         case 'AWS::IAM::Policy':
           if (res.startsWith('CustomCDKBucketDeployment')) {
             matchObject.Resources[res] = {
