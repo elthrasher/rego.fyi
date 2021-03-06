@@ -110,7 +110,6 @@ export const PayloadsProvider = ({ children }: { children: ReactNode }): JSX.Ele
       if (response.status === 200) {
         setStatus('ALLOWED');
         const body = await response.json();
-        console.log(body);
         setResponsePayload(JSON.stringify(body));
       } else {
         setStatus('DENIED');

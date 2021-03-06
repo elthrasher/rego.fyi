@@ -1,53 +1,27 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import '@testing-library/jest-dom/extend-expect';
 
-import { Payloads, PayloadsContext, PayloadsProvider } from '../providers/PayloadsProvider';
+import { render } from '@testing-library/react';
+import React from 'react';
+
+import { Payloads, PayloadsContext } from '../providers/PayloadsProvider';
 import { Header } from './Header';
 
-it('renders default', () => {
-  const component = renderer.create(
-    <PayloadsProvider>
-      <Header />
-    </PayloadsProvider>,
-    {
-      createNodeMock: (node) => {
-        return document.createElement(node.type.toString());
-      },
-    },
-  );
-
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-it('renders an ALLOWED message', () => {
-  const component = renderer.create(
-    <PayloadsContext.Provider value={{ status: 'ALLOWED', responsePayload: 'response' } as Payloads}>
+test.each`
+  status       | responsePayload
+  ${undefined} | ${undefined}
+  ${'ALLOWED'} | ${'response'}
+  ${'DENIED'}  | ${undefined}
+`('Header with status of $status', ({ status, responsePayload }) => {
+  const { container } = render(
+    <PayloadsContext.Provider value={{ status, responsePayload } as Payloads}>
       <Header />
     </PayloadsContext.Provider>,
-    {
-      createNodeMock: (node) => {
-        return document.createElement(node.type.toString());
-      },
-    },
   );
-
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-it('renders a DENIED message', () => {
-  const component = renderer.create(
-    <PayloadsContext.Provider value={{ status: 'ALLOWED' } as Payloads}>
-      <Header />
-    </PayloadsContext.Provider>,
-    {
-      createNodeMock: (node) => {
-        return document.createElement(node.type.toString());
-      },
-    },
-  );
-
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+  expect(container).toHaveTextContent('rego.fyi');
+  if (status) {
+    expect(container).toHaveTextContent(status);
+  }
+  if (responsePayload) {
+    expect(container).toHaveTextContent(responsePayload);
+  }
 });

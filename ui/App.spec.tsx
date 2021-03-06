@@ -1,15 +1,13 @@
+import '@testing-library/jest-dom/extend-expect';
+
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import App from './App';
 
-it('renders a message', () => {
-  const component = renderer.create(<App />, {
-    createNodeMock: (node) => {
-      return document.createElement(node.type.toString());
-    },
-  });
+test('render the app', () => {
+  const { container } = render(<App />);
 
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+  expect(container).toHaveTextContent('rego.fyi');
+  expect(container).toMatchSnapshot();
 });

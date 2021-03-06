@@ -1,236 +1,185 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a message 1`] = `
-<div
-  className="MuiContainer-root MuiContainer-maxWidthLg"
->
+exports[`render the app 1`] = `
+<div>
   <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+    class="MuiContainer-root MuiContainer-maxWidthLg"
   >
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-lg-8"
+      class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
     >
       <div
-        className="MuiContainer-root MuiContainer-maxWidthLg"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-lg-8"
       >
         <div
-          className="MuiContainer-root MuiContainer-maxWidthLg"
+          class="MuiContainer-root MuiContainer-maxWidthLg"
         >
           <div
-            className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+            class="MuiContainer-root MuiContainer-maxWidthLg"
           >
             <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3"
+              class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
             >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3"
               >
-                <h1>
+                <h2
+                  class="MuiTypography-root MuiTypography-h2"
+                >
                   rego.fyi
-                </h1>
-              </p>
+                </h2>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-9"
+              />
             </div>
-            <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-9"
-            />
           </div>
-        </div>
-        <div
-          className="MuiContainer-root MuiContainer-maxWidthLg"
-        >
           <div
-            className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+            class="MuiContainer-root MuiContainer-maxWidthLg"
           >
             <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+              class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
             >
               <div
-                className="MuiFormControl-root"
-              >
-                <label
-                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-                  data-shrink={true}
-                >
-                  Method
-                </label>
-                <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  onClick={[Function]}
-                >
-                  <div
-                    aria-haspopup="listbox"
-                    className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                    onBlur={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onMouseDown={[Function]}
-                    role="button"
-                    tabIndex={0}
-                  >
-                    GET
-                  </div>
-                  <input
-                    aria-hidden={true}
-                    className="MuiSelect-nativeInput"
-                    onAnimationStart={[Function]}
-                    onChange={[Function]}
-                    required={false}
-                    tabIndex={-1}
-                    value="GET"
-                  />
-                  <svg
-                    aria-hidden={true}
-                    className="MuiSvgIcon-root MuiSelect-icon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M7 10l5 5 5-5z"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-            >
-              <div
-                className="MuiFormControl-root"
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
               >
                 <div
-                  className="MuiFormControl-root MuiTextField-root"
+                  class="MuiFormControl-root"
                 >
                   <label
-                    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-                    data-shrink={false}
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                    data-shrink="true"
                   >
-                    Resource
+                    Method
                   </label>
                   <div
-                    className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                    onClick={[Function]}
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
                   >
+                    <div
+                      aria-haspopup="listbox"
+                      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                      role="button"
+                      tabindex="0"
+                    >
+                      GET
+                    </div>
                     <input
-                      aria-invalid={false}
-                      autoFocus={false}
-                      className="MuiInputBase-input MuiInput-input"
-                      disabled={false}
-                      onAnimationStart={[Function]}
-                      onBlur={[Function]}
-                      onChange={[Function]}
-                      onFocus={[Function]}
-                      required={false}
-                      type="text"
-                      value="/orders"
+                      aria-hidden="true"
+                      class="MuiSelect-nativeInput"
+                      tabindex="-1"
+                      value="GET"
                     />
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSelect-icon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+              >
+                <div
+                  class="MuiFormControl-root"
+                >
+                  <div
+                    class="MuiFormControl-root MuiTextField-root"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                      data-shrink="true"
+                    >
+                      Resource
+                    </label>
+                    <div
+                      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                    >
+                      <input
+                        aria-invalid="false"
+                        class="MuiInputBase-input MuiInput-input"
+                        type="text"
+                        value="/orders"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="MuiContainer-root MuiContainer-maxWidthLg"
-        >
-          <fieldset
-            className="MuiFormControl-root MuiFormControl-fullWidth"
+          <div
+            class="MuiContainer-root MuiContainer-maxWidthLg"
           >
-            <div
-              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            <fieldset
+              class="MuiFormControl-root MuiFormControl-fullWidth"
             >
-              <label
-                className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled"
-                data-shrink={false}
-                htmlFor="User info such as a JWT or session"
-                id="User info such as a JWT or session-label"
-              >
-                User info such as a JWT or session
-              </label>
               <div
-                className="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
-                onClick={[Function]}
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
               >
-                <textarea
-                  aria-invalid={false}
-                  autoFocus={false}
-                  className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
-                  disabled={false}
-                  id="User info such as a JWT or session"
-                  onAnimationStart={[Function]}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  required={false}
-                  rows={1}
-                  style={
-                    Object {
-                      "height": -4,
-                      "overflow": "hidden",
-                    }
-                  }
-                  value="{\\"permissions\\":[\\"start_order\\"],\\"resource\\":\\"/orders\\",\\"method\\":\\"GET\\",\\"subscriptions\\":[\\"newsletter\\"]}"
-                />
-                <textarea
-                  aria-hidden={true}
-                  className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
-                  readOnly={true}
-                  style={
-                    Object {
-                      "height": 0,
-                      "left": 0,
-                      "overflow": "hidden",
-                      "position": "absolute",
-                      "top": 0,
-                      "transform": "translateZ(0)",
-                      "visibility": "hidden",
-                    }
-                  }
-                  tabIndex={-1}
-                />
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+                  data-shrink="true"
+                  for="User info such as a JWT or session"
+                  id="User info such as a JWT or session-label"
+                >
+                  User info such as a JWT or session
+                </label>
+                <div
+                  class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
+                >
+                  <textarea
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+                    id="User info such as a JWT or session"
+                    rows="1"
+                    style="height: 0px; overflow: hidden;"
+                  >
+                    {"permissions":["start_order"],"resource":"/orders","method":"GET","subscriptions":["newsletter"]}
+                  </textarea>
+                  <textarea
+                    aria-hidden="true"
+                    class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+                    readonly=""
+                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                    tabindex="-1"
+                  />
+                </div>
               </div>
-            </div>
-          </fieldset>
-        </div>
-        <div
-          className="MuiContainer-root MuiContainer-maxWidthLg"
-        >
-          <fieldset
-            className="MuiFormControl-root MuiFormControl-fullWidth"
+            </fieldset>
+          </div>
+          <div
+            class="MuiContainer-root MuiContainer-maxWidthLg"
           >
-            <div
-              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            <fieldset
+              class="MuiFormControl-root MuiFormControl-fullWidth"
             >
-              <label
-                className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled"
-                data-shrink={false}
-                htmlFor="Rego policy loaded from disk or other storage"
-                id="Rego policy loaded from disk or other storage-label"
-              >
-                Rego policy loaded from disk or other storage
-              </label>
               <div
-                className="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
-                onClick={[Function]}
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
               >
-                <textarea
-                  aria-invalid={false}
-                  autoFocus={false}
-                  className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
-                  disabled={false}
-                  id="Rego policy loaded from disk or other storage"
-                  onAnimationStart={[Function]}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  required={false}
-                  rows={1}
-                  style={
-                    Object {
-                      "height": -4,
-                      "overflow": "hidden",
-                    }
-                  }
-                  value="package entitlements
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+                  data-shrink="true"
+                  for="Rego policy loaded from disk or other storage"
+                  id="Rego policy loaded from disk or other storage-label"
+                >
+                  Rego policy loaded from disk or other storage
+                </label>
+                <div
+                  class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
+                >
+                  <textarea
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+                    id="Rego policy loaded from disk or other storage"
+                    rows="1"
+                    style="height: 0px; overflow: hidden;"
+                  >
+                    package entitlements
 
 import data.requests
 import data.permissions
@@ -251,334 +200,224 @@ check_entitlements[input] {
 }
 
 match_with_wildcard(allowed, value) {
-    allowed[_] = \\"*\\"
+    allowed[_] = "*"
 }
 match_with_wildcard(allowed, value) {
     allowed[_] = value
-}"
-                />
-                <textarea
-                  aria-hidden={true}
-                  className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
-                  readOnly={true}
-                  style={
-                    Object {
-                      "height": 0,
-                      "left": 0,
-                      "overflow": "hidden",
-                      "position": "absolute",
-                      "top": 0,
-                      "transform": "translateZ(0)",
-                      "visibility": "hidden",
-                    }
-                  }
-                  tabIndex={-1}
-                />
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        <div
-          className="MuiContainer-root MuiContainer-maxWidthLg"
-        >
-          <fieldset
-            className="MuiFormControl-root MuiFormControl-fullWidth"
-          >
-            <div
-              className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-            >
-              <label
-                className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-filled"
-                data-shrink={false}
-                htmlFor="Data loaded from disk or other storage for making policy decisions"
-                id="Data loaded from disk or other storage for making policy decisions-label"
-              >
-                Data loaded from disk or other storage for making policy decisions
-              </label>
-              <div
-                className="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
-                onClick={[Function]}
-              >
-                <textarea
-                  aria-invalid={false}
-                  autoFocus={false}
-                  className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
-                  disabled={false}
-                  id="Data loaded from disk or other storage for making policy decisions"
-                  onAnimationStart={[Function]}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  required={false}
-                  rows={1}
-                  style={
-                    Object {
-                      "height": -4,
-                      "overflow": "hidden",
-                    }
-                  }
-                  value="{\\"requests\\":[{\\"methods\\":[\\"GET\\"],\\"resources\\":[\\"/orders\\"]}],\\"permissions\\":[\\"start_order\\",\\"view_invoice\\"],\\"subscriptions\\":[\\"newsletter\\"]}"
-                />
-                <textarea
-                  aria-hidden={true}
-                  className="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
-                  readOnly={true}
-                  style={
-                    Object {
-                      "height": 0,
-                      "left": 0,
-                      "overflow": "hidden",
-                      "position": "absolute",
-                      "top": 0,
-                      "transform": "translateZ(0)",
-                      "visibility": "hidden",
-                    }
-                  }
-                  tabIndex={-1}
-                />
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        <button
-          className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiButton-label"
-          >
-            Send Request
-          </span>
-          <span
-            className="MuiTouchRipple-root"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-lg-4"
-    >
-      <div
-        className="MuiContainer-root MuiContainer-maxWidthLg"
-      >
-        <div
-          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
-        >
-          <div
-            area-controls="panel1a-content"
-            aria-disabled={false}
-            aria-expanded={false}
-            className="MuiButtonBase-root MuiAccordionSummary-root"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
-          >
-            <div
-              className="MuiAccordionSummary-content"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                <h4>
-                  What is this?
-                </h4>
-              </p>
-            </div>
-            <div
-              aria-disabled={false}
-              aria-hidden={true}
-              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-              onBlur={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role={null}
-              tabIndex={null}
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+}
+                  </textarea>
+                  <textarea
+                    aria-hidden="true"
+                    class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+                    readonly=""
+                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                    tabindex="-1"
                   />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </div>
+                </div>
+              </div>
+            </fieldset>
           </div>
           <div
-            className="MuiCollapse-container MuiCollapse-hidden"
-            style={
-              Object {
-                "minHeight": "0px",
-              }
-            }
+            class="MuiContainer-root MuiContainer-maxWidthLg"
           >
-            <div
-              className="MuiCollapse-wrapper"
+            <fieldset
+              class="MuiFormControl-root MuiFormControl-fullWidth"
             >
               <div
-                className="MuiCollapse-wrapperInner"
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+                  data-shrink="true"
+                  for="Data loaded from disk or other storage for making policy decisions"
+                  id="Data loaded from disk or other storage for making policy decisions-label"
+                >
+                  Data loaded from disk or other storage for making policy decisions
+                </label>
+                <div
+                  class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiFilledInput-multiline"
+                >
+                  <textarea
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+                    id="Data loaded from disk or other storage for making policy decisions"
+                    rows="1"
+                    style="height: 0px; overflow: hidden;"
+                  >
+                    {"requests":[{"methods":["GET"],"resources":["/orders"]}],"permissions":["start_order","view_invoice"],"subscriptions":["newsletter"]}
+                  </textarea>
+                  <textarea
+                    aria-hidden="true"
+                    class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline MuiFilledInput-inputMultiline"
+                    readonly=""
+                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                    tabindex="-1"
+                  />
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Send Request
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-lg-4"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <div
+            class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              area-controls="panel1a-content"
+              aria-disabled="false"
+              aria-expanded="false"
+              class="MuiButtonBase-root MuiAccordionSummary-root"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="MuiAccordionSummary-content"
+              >
+                <h4
+                  class="MuiTypography-root MuiTypography-h4"
+                >
+                  What is this?
+                </h4>
+              </div>
+              <div
+                aria-disabled="false"
+                aria-hidden="true"
+                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <div
+              class="MuiCollapse-container MuiCollapse-hidden"
+              style="min-height: 0px;"
+            >
+              <div
+                class="MuiCollapse-wrapper"
               >
                 <div
-                  role="region"
+                  class="MuiCollapse-wrapperInner"
                 >
                   <div
-                    className="MuiAccordionDetails-root"
+                    role="region"
                   >
-                    <p
-                      className="MuiTypography-root MuiTypography-body1"
+                    <div
+                      class="MuiAccordionDetails-root"
                     >
-                      I was interested to see if I could use rego in a serverless environment. I put together a demo that involved using a REST client, copying tokens around and stuff like that. I decided my demo was terrible and resolved to do something better, this, which is at least better than that demo.
-                    </p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        I was interested to see if I could use rego in a serverless environment. I put together a demo that involved using a REST client, copying tokens around and stuff like that. I decided my demo was terrible and resolved to do something better, this, which is at least better than that demo.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
-        >
           <div
-            area-controls="panel1a-content"
-            aria-disabled={false}
-            aria-expanded={false}
-            className="MuiButtonBase-root MuiAccordionSummary-root"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
+            class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              className="MuiAccordionSummary-content"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                <h4>
-                  How do I use it?
-                </h4>
-              </p>
-            </div>
-            <div
-              aria-disabled={false}
-              aria-hidden={true}
-              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-              onBlur={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role={null}
-              tabIndex={null}
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiCollapse-container MuiCollapse-hidden"
-            style={
-              Object {
-                "minHeight": "0px",
-              }
-            }
-          >
-            <div
-              className="MuiCollapse-wrapper"
+              area-controls="panel1a-content"
+              aria-disabled="false"
+              aria-expanded="false"
+              class="MuiButtonBase-root MuiAccordionSummary-root"
+              role="button"
+              tabindex="0"
             >
               <div
-                className="MuiCollapse-wrapperInner"
+                class="MuiAccordionSummary-content"
+              >
+                <h4
+                  class="MuiTypography-root MuiTypography-h4"
+                >
+                  How do I use it?
+                </h4>
+              </div>
+              <div
+                aria-disabled="false"
+                aria-hidden="true"
+                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <div
+              class="MuiCollapse-container MuiCollapse-hidden"
+              style="min-height: 0px;"
+            >
+              <div
+                class="MuiCollapse-wrapper"
               >
                 <div
-                  role="region"
+                  class="MuiCollapse-wrapperInner"
                 >
                   <div
-                    className="MuiAccordionDetails-root"
+                    role="region"
                   >
-                    <p
-                      className="MuiTypography-root MuiTypography-body1"
+                    <div
+                      class="MuiAccordionDetails-root"
                     >
-                      <p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
                         Edit any of the three text blocks and select an HTTP method and path. The top and bottom should have JSON data and are validated. The middle one is written in
                          
                         <a
-                          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                          class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
                           href="https://www.openpolicyagent.org/docs/latest/policy-language/"
-                          onBlur={[Function]}
-                          onFocus={[Function]}
                           rel="noopener"
                           target="_blank"
                         >
@@ -588,10 +427,8 @@ match_with_wildcard(allowed, value) {
                         and isn't validated (yet) but you could use
                          
                         <a
-                          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                          class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
                           href="https://play.openpolicyagent.org/"
-                          onBlur={[Function]}
-                          onFocus={[Function]}
                           rel="noopener"
                           target="_blank"
                         >
@@ -599,121 +436,90 @@ match_with_wildcard(allowed, value) {
                         </a>
                         .
                       </p>
-                      <p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
                         When you click the SEND REQUEST button, the app will encode all three text blocks and make an HTTP request to the serverless backend. The backend will decode the token, compile the rego policy, evaluate the policy with the other payloads, then return the appropriate response.
                       </p>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
-        >
           <div
-            area-controls="panel1a-content"
-            aria-disabled={false}
-            aria-expanded={false}
-            className="MuiButtonBase-root MuiAccordionSummary-root"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
+            class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              className="MuiAccordionSummary-content"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                <h4>
-                  Architecture
-                </h4>
-              </p>
-            </div>
-            <div
-              aria-disabled={false}
-              aria-hidden={true}
-              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-              onBlur={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role={null}
-              tabIndex={null}
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiCollapse-container MuiCollapse-hidden"
-            style={
-              Object {
-                "minHeight": "0px",
-              }
-            }
-          >
-            <div
-              className="MuiCollapse-wrapper"
+              area-controls="panel1a-content"
+              aria-disabled="false"
+              aria-expanded="false"
+              class="MuiButtonBase-root MuiAccordionSummary-root"
+              role="button"
+              tabindex="0"
             >
               <div
-                className="MuiCollapse-wrapperInner"
+                class="MuiAccordionSummary-content"
+              >
+                <h4
+                  class="MuiTypography-root MuiTypography-h4"
+                >
+                  Architecture
+                </h4>
+              </div>
+              <div
+                aria-disabled="false"
+                aria-hidden="true"
+                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <div
+              class="MuiCollapse-container MuiCollapse-hidden"
+              style="min-height: 0px;"
+            >
+              <div
+                class="MuiCollapse-wrapper"
               >
                 <div
-                  role="region"
+                  class="MuiCollapse-wrapperInner"
                 >
                   <div
-                    className="MuiAccordionDetails-root"
+                    role="region"
                   >
-                    <p
-                      className="MuiTypography-root MuiTypography-body1"
+                    <div
+                      class="MuiAccordionDetails-root"
                     >
-                      <p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
                         The web app is written in React and is an S3 website. The API uses API Gateway and Lambda. Nothing sent to the API is stored, but there's some logging in place.
                       </p>
-                      <p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
                         The backend consists of two Lambda functions, an authorizer written in golang and a handler written in NodeJS. The authorizer is implemented with
                          
                         <a
-                          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                          class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
                           href="https://github.com/open-policy-agent/opa"
-                          onBlur={[Function]}
-                          onFocus={[Function]}
                           rel="noopener"
                           target="_blank"
                         >
@@ -721,340 +527,237 @@ match_with_wildcard(allowed, value) {
                         </a>
                         .
                       </p>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
-        >
           <div
-            area-controls="panel1a-content"
-            aria-disabled={false}
-            aria-expanded={false}
-            className="MuiButtonBase-root MuiAccordionSummary-root"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
+            class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              className="MuiAccordionSummary-content"
+              area-controls="panel1a-content"
+              aria-disabled="false"
+              aria-expanded="false"
+              class="MuiButtonBase-root MuiAccordionSummary-root"
+              role="button"
+              tabindex="0"
             >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
+              <div
+                class="MuiAccordionSummary-content"
               >
-                <h4>
+                <h4
+                  class="MuiTypography-root MuiTypography-h4"
+                >
                   Production use?
                 </h4>
-              </p>
-            </div>
-            <div
-              aria-disabled={false}
-              aria-hidden={true}
-              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-              onBlur={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role={null}
-              tabIndex={null}
-            >
-              <span
-                className="MuiIconButton-label"
+              </div>
+              <div
+                aria-disabled="false"
+                aria-hidden="true"
+                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
               >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <span
+                  class="MuiIconButton-label"
                 >
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            className="MuiCollapse-container MuiCollapse-hidden"
-            style={
-              Object {
-                "minHeight": "0px",
-              }
-            }
-          >
             <div
-              className="MuiCollapse-wrapper"
+              class="MuiCollapse-container MuiCollapse-hidden"
+              style="min-height: 0px;"
             >
               <div
-                className="MuiCollapse-wrapperInner"
+                class="MuiCollapse-wrapper"
               >
                 <div
-                  role="region"
+                  class="MuiCollapse-wrapperInner"
                 >
                   <div
-                    className="MuiAccordionDetails-root"
+                    role="region"
                   >
-                    <p
-                      className="MuiTypography-root MuiTypography-body1"
+                    <div
+                      class="MuiAccordionDetails-root"
                     >
-                      <p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
                         This? Nope. You don't want your authorization system to accept a policy from the client. Something like this? Very possibly.
                       </p>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
-        >
           <div
-            area-controls="panel1a-content"
-            aria-disabled={false}
-            aria-expanded={false}
-            className="MuiButtonBase-root MuiAccordionSummary-root"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
+            class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              className="MuiAccordionSummary-content"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                <h4>
-                  Open Policy Agent
-                </h4>
-              </p>
-            </div>
-            <div
-              aria-disabled={false}
-              aria-hidden={true}
-              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-              onBlur={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role={null}
-              tabIndex={null}
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiCollapse-container MuiCollapse-hidden"
-            style={
-              Object {
-                "minHeight": "0px",
-              }
-            }
-          >
-            <div
-              className="MuiCollapse-wrapper"
+              area-controls="panel1a-content"
+              aria-disabled="false"
+              aria-expanded="false"
+              class="MuiButtonBase-root MuiAccordionSummary-root"
+              role="button"
+              tabindex="0"
             >
               <div
-                className="MuiCollapse-wrapperInner"
+                class="MuiAccordionSummary-content"
+              >
+                <h4
+                  class="MuiTypography-root MuiTypography-h4"
+                >
+                  Open Policy Agent
+                </h4>
+              </div>
+              <div
+                aria-disabled="false"
+                aria-hidden="true"
+                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <div
+              class="MuiCollapse-container MuiCollapse-hidden"
+              style="min-height: 0px;"
+            >
+              <div
+                class="MuiCollapse-wrapper"
               >
                 <div
-                  role="region"
+                  class="MuiCollapse-wrapperInner"
                 >
                   <div
-                    className="MuiAccordionDetails-root"
+                    role="region"
                   >
-                    <p
-                      className="MuiTypography-root MuiTypography-body1"
+                    <div
+                      class="MuiAccordionDetails-root"
                     >
-                      <p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
                         I'm not affiliated.
                          
                         <a
-                          className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                          class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
                           href="https://www.openpolicyagent.org/"
-                          onBlur={[Function]}
-                          onFocus={[Function]}
                           rel="noopener"
                           target="_blank"
                         >
                           Learn more.
                         </a>
                       </p>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
-        >
           <div
-            area-controls="panel1a-content"
-            aria-disabled={false}
-            aria-expanded={false}
-            className="MuiButtonBase-root MuiAccordionSummary-root"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role="button"
-            tabIndex={0}
+            class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              className="MuiAccordionSummary-content"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                <h4>
-                  Me
-                </h4>
-              </p>
-            </div>
-            <div
-              aria-disabled={false}
-              aria-hidden={true}
-              className="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-              onBlur={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              role={null}
-              tabIndex={null}
-            >
-              <span
-                className="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                  />
-                </svg>
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </div>
-          </div>
-          <div
-            className="MuiCollapse-container MuiCollapse-hidden"
-            style={
-              Object {
-                "minHeight": "0px",
-              }
-            }
-          >
-            <div
-              className="MuiCollapse-wrapper"
+              area-controls="panel1a-content"
+              aria-disabled="false"
+              aria-expanded="false"
+              class="MuiButtonBase-root MuiAccordionSummary-root"
+              role="button"
+              tabindex="0"
             >
               <div
-                className="MuiCollapse-wrapperInner"
+                class="MuiAccordionSummary-content"
+              >
+                <h4
+                  class="MuiTypography-root MuiTypography-h4"
+                >
+                  Me
+                </h4>
+              </div>
+              <div
+                aria-disabled="false"
+                aria-hidden="true"
+                class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+            <div
+              class="MuiCollapse-container MuiCollapse-hidden"
+              style="min-height: 0px;"
+            >
+              <div
+                class="MuiCollapse-wrapper"
               >
                 <div
-                  role="region"
+                  class="MuiCollapse-wrapperInner"
                 >
                   <div
-                    className="MuiAccordionDetails-root"
+                    role="region"
                   >
-                    <p
-                      className="MuiTypography-root MuiTypography-body1"
+                    <div
+                      class="MuiAccordionDetails-root"
                     >
-                      <p>
+                      <p
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
                         Hello, come find me
                          
                         <a
-                          className="MuiTypography-root MuiLink-root MuiLink-underlineHover twitter-follow-button MuiTypography-colorPrimary"
+                          class="MuiTypography-root MuiLink-root MuiLink-underlineHover twitter-follow-button MuiTypography-colorPrimary"
                           data-show-count="false"
                           href="https://twitter.com/NullishCoalesce?ref_src=twsrc%5Etfw"
-                          onBlur={[Function]}
-                          onFocus={[Function]}
                         >
                           Follow @TwitterDev
                         </a>
                       </p>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>

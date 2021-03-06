@@ -14,9 +14,7 @@ export const Header = (): JSX.Element => {
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <Typography>
-            <h1>rego.fyi</h1>
-          </Typography>
+          <Typography variant="h2">rego.fyi</Typography>
         </Grid>
         <Grid item xs={9}>
           {status && (
