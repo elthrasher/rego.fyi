@@ -1,14 +1,23 @@
-# cdk-esbuild-s3-website
+# rego.fyi
 
-Build and deploy a static website with React (or whatever) in a single command!
+Source for [rego.fyi](https://rego.fyi) as a single [AWS CDK](https://aws.amazon.com/cdk/) stack.
 
-Read about it on [dev.to](https://dev.to/aws-builders/aws-cdk-one-step-s3-websites-with-esbuild-2e3h).
+<!-- Read about it on [dev.to](). -->
+
+## Requirements
+
+- NodeJS 14 ([get it](https://nodejs.org/en/))
+- Go 1.16 ([get it](https://golang.org/doc/install))
+- OPA ([get it](https://www.openpolicyagent.org/docs/latest/#running-opa) or [via homebrew](https://formulae.brew.sh/formula/opa))
 
 ## Useful commands
 
 - `npm install` do this first
 - `npm run lint` check your style
-- `npm test` run unit tests
+- `npm test` run all tests
+- `npm run test:opa` run opa tests only
+- `npm run test:go` run the go tests
+- `npm run test:ts` run all the TypeScript tests with jest
 - `npm start` run the UI on localhost
 - `npx cdk bootstrap` prepare your environment
 - `npm run deploy` build and deploy your app

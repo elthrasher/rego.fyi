@@ -1,0 +1,5 @@
+{
+  "requests": [{ "methods": ["GET"], "resources": ["/orders"] }],
+  "permissions": ["start_order", "view_invoice"],
+  "subscriptions": ["newsletter"]
+}

@@ -179,7 +179,7 @@ exports[`render the app 1`] = `
                     rows="1"
                     style="height: 0px; overflow: hidden;"
                   >
-                    package entitlements
+                    package policy
 
 import data.requests
 import data.permissions
@@ -188,10 +188,10 @@ import data.subscriptions
 default allow = false
 
 allow {
-    check_entitlements[input]
+    check_policy[input]
 }
 
-check_entitlements[input] {
+check_policy[input] {
     r = requests[_]
     some i; match_with_wildcard(data.permissions, input.permissions[i])
     some j; match_with_wildcard(data.subscriptions, input.subscriptions[j])
@@ -205,6 +205,7 @@ match_with_wildcard(allowed, value) {
 match_with_wildcard(allowed, value) {
     allowed[_] = value
 }
+
                   </textarea>
                   <textarea
                     aria-hidden="true"

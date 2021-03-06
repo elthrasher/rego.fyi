@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"testing"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -13,8 +14,13 @@ var (
 )
 
 func TestHandler(t *testing.T) {
+
+	tokenString := `{"data":"{\"requests\":[{\"methods\":[\"GET\"],\"resources\":[\"/orders\"]}],\"permissions\":[\"start_order\",\"view_invoice\"],\"subscriptions\":[\"newsletter\"]}","rego":"package policy\n\nimport data.requests\nimport data.permissions\nimport data.subscriptions\n\ndefault allow = false\n\nallow {\n    check_policy[input]\n}\n\ncheck_policy[input] {\n    r = requests[_]\n    some i; match_with_wildcard(data.permissions, input.permissions[i])\n    some j; match_with_wildcard(data.subscriptions, input.subscriptions[j])\n    match_with_wildcard(r.methods, input.method)\n    match_with_wildcard(r.resources, input.resource)\n}\n\nmatch_with_wildcard(allowed, value) {\n    allowed[_] = \"*\"\n}\nmatch_with_wildcard(allowed, value) {\n    allowed[_] = value\n}","token":"{\"permissions\":[\"start_order\"],\"resource\":\"/orders\",\"method\":\"GET\",\"subscriptions\":[\"newsletter\"]}"}`
+
+	encodedtoken := base64.StdEncoding.EncodeToString([]byte(tokenString))
+
 	request = events.APIGatewayCustomAuthorizerRequestTypeRequest{
-		Headers:    map[string]string{"Authorization": "Bearer eyJkYXRhIjoie1wicmVxdWVzdHNcIjpbe1wibWV0aG9kc1wiOltcIkdFVFwiXSxcInJlc291cmNlc1wiOltcIi9vcmRlcnNcIl19XSxcInBlcm1pc3Npb25zXCI6W1wic3RhcnRfb3JkZXJcIixcInZpZXdfaW52b2ljZVwiXSxcInN1YnNjcmlwdGlvbnNcIjpbXCJuZXdzbGV0dGVyXCJdfSIsInJlZ28iOiJwYWNrYWdlIGVudGl0bGVtZW50c1xuXG5pbXBvcnQgZGF0YS5yZXF1ZXN0c1xuaW1wb3J0IGRhdGEucGVybWlzc2lvbnNcbmltcG9ydCBkYXRhLnN1YnNjcmlwdGlvbnNcblxuZGVmYXVsdCBhbGxvdyA9IGZhbHNlXG5cbmFsbG93IHtcbiAgICBjaGVja19lbnRpdGxlbWVudHNbaW5wdXRdXG59XG5cbmNoZWNrX2VudGl0bGVtZW50c1tpbnB1dF0ge1xuICAgIHIgPSByZXF1ZXN0c1tfXVxuICAgIHNvbWUgaTsgbWF0Y2hfd2l0aF93aWxkY2FyZChkYXRhLnBlcm1pc3Npb25zLCBpbnB1dC5wZXJtaXNzaW9uc1tpXSlcbiAgICBzb21lIGo7IG1hdGNoX3dpdGhfd2lsZGNhcmQoZGF0YS5zdWJzY3JpcHRpb25zLCBpbnB1dC5zdWJzY3JpcHRpb25zW2pdKVxuICAgIG1hdGNoX3dpdGhfd2lsZGNhcmQoci5tZXRob2RzLCBpbnB1dC5tZXRob2QpXG4gICAgbWF0Y2hfd2l0aF93aWxkY2FyZChyLnJlc291cmNlcywgaW5wdXQucmVzb3VyY2UpXG59XG5cbm1hdGNoX3dpdGhfd2lsZGNhcmQoYWxsb3dlZCwgdmFsdWUpIHtcbiAgICBhbGxvd2VkW19dID0gXCIqXCJcbn1cbm1hdGNoX3dpdGhfd2lsZGNhcmQoYWxsb3dlZCwgdmFsdWUpIHtcbiAgICBhbGxvd2VkW19dID0gdmFsdWVcbn0iLCJ0b2tlbiI6IntcInBlcm1pc3Npb25zXCI6W1wic3RhcnRfb3JkZXJcIl0sXCJyZXNvdXJjZVwiOlwiL29yZGVyc1wiLFwibWV0aG9kXCI6XCJHRVRcIixcInN1YnNjcmlwdGlvbnNcIjpbXCJuZXdzbGV0dGVyXCJdfSJ9"},
+		Headers:    map[string]string{"Authorization": "Bearer " + encodedtoken},
 		HTTPMethod: "GET",
 		MethodArn:  "testARN",
 		Path:       "/orders",

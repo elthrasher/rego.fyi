@@ -1,6 +1,7 @@
 const baseConfig = {
   roots: ['<rootDir>'],
   transform: {
+    '\\.rego$': 'jest-raw-loader',
     '^.+\\.tsx?$': 'ts-jest',
   },
   collectCoverageFrom: [

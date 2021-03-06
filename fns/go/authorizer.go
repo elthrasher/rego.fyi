@@ -27,10 +27,6 @@ var ctx context.Context
 
 func main() {
 	log.Println("cold start")
-
-	// just compile OPA policies once per container
-
-	//os.Exit(0)
 	lambda.Start(Handler)
 }
 
@@ -47,7 +43,7 @@ func compileOpaPolicy(module string, data string) {
 	store = inmem.NewFromReader(bytes.NewBufferString(data))
 
 	// Parse the module. The first argument is used as an identifier in error messages.
-	parsed, err := ast.ParseModule("entitlements.rego", module)
+	parsed, err := ast.ParseModule("policy.rego", module)
 	if err != nil {
 		// Handle error.
 	}
@@ -56,7 +52,7 @@ func compileOpaPolicy(module string, data string) {
 	// identifiers in error messages.
 	compiler = ast.NewCompiler()
 	compiler.Compile(map[string]*ast.Module{
-		"entitlements.rego": parsed,
+		"policy.rego": parsed,
 	})
 
 	if compiler.Failed() {
@@ -70,7 +66,7 @@ func checkOpaPolicy(method string, permissions []string, resourcePath string, su
 
 	// Create a new query that uses the compiled policy from above.
 	reg := rego.New(
-		rego.Query("data.entitlements.allow"),
+		rego.Query("data.policy.allow"),
 		rego.Store(store),
 		rego.Compiler(compiler),
 		rego.Input(

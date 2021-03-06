@@ -14,8 +14,9 @@
     "pretest": "npm run lint",
     "start": "npm run clean && ts-node --files esbuild.ts",
     "synth": "cdk synth",
-    "test": "npm run test:go && npm run test:ts",
-    "test:go": "cd fns/go && go test && cd ../..",
+    "test": "npm run test:opa && npm run test:go && npm run test:ts",
+    "test:opa": "opa test ./opa",
+    "test:go": "go test ./...",
     "test:ts": "jest --coverage"
   },
   "keywords": [
@@ -32,7 +33,6 @@
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.92.0",
-    "@aws-cdk/aws-iam": "1.92.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/react-hooks": "^5.1.0",
@@ -50,6 +50,7 @@
     "eslint-plugin-prettier": "^3.3.0",
     "fs-extra": "^9.1.0",
     "jest": "^26.6.3",
+    "jest-raw-loader": "^1.0.1",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.3",
@@ -61,6 +62,7 @@
     "@aws-cdk/aws-certificatemanager": "1.92.0",
     "@aws-cdk/aws-cloudfront": "1.92.0",
     "@aws-cdk/aws-cloudfront-origins": "1.92.0",
+    "@aws-cdk/aws-iam": "1.92.0",
     "@aws-cdk/aws-lambda": "1.92.0",
     "@aws-cdk/aws-lambda-nodejs": "1.92.0",
     "@aws-cdk/aws-logs": "1.92.0",

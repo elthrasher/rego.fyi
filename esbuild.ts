@@ -7,7 +7,7 @@ const buildOptions: BuildOptions = {
   bundle: true,
   define: { 'process.env.NODE_ENV': `"${env}"` }, // must be double-quoted
   entryPoints: ['ui/index.tsx'],
-  loader: { '.js': 'tsx' },
+  loader: { '.js': 'tsx', '.rego': 'text' },
   logLevel: 'warning',
   minify: true,
   outdir: 'website/js',

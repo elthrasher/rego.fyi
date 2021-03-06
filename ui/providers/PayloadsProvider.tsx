@@ -1,39 +1,8 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
+import dataDefault from '../../opa/data.json';
+import regoDefault from '../../opa/policy.rego';
 
 const baseUrl = 'https://api.rego.fyi';
-
-const dataDefault = JSON.stringify({
-  requests: [{ methods: ['GET'], resources: ['/orders'] }],
-  permissions: ['start_order', 'view_invoice'],
-  subscriptions: ['newsletter'],
-});
-
-const regoDefault = `package entitlements
-
-import data.requests
-import data.permissions
-import data.subscriptions
-
-default allow = false
-
-allow {
-    check_entitlements[input]
-}
-
-check_entitlements[input] {
-    r = requests[_]
-    some i; match_with_wildcard(data.permissions, input.permissions[i])
-    some j; match_with_wildcard(data.subscriptions, input.subscriptions[j])
-    match_with_wildcard(r.methods, input.method)
-    match_with_wildcard(r.resources, input.resource)
-}
-
-match_with_wildcard(allowed, value) {
-    allowed[_] = "*"
-}
-match_with_wildcard(allowed, value) {
-    allowed[_] = value
-}`;
 
 const tokenDefault = JSON.stringify({
   permissions: ['start_order'],
@@ -63,7 +32,7 @@ export interface Payloads {
 export const PayloadsContext = createContext<Payloads | undefined>(undefined);
 
 export const PayloadsProvider = ({ children }: { children: ReactNode }): JSX.Element => {
-  const [data, setData] = useState<string>(dataDefault);
+  const [data, setData] = useState<string>(JSON.stringify(dataDefault));
   const [rego, setRego] = useState<string>(regoDefault);
   const [token, setToken] = useState<string>(tokenDefault);
 
