@@ -5,7 +5,7 @@ import { ARecord, IHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
 import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
 import { Bucket } from '@aws-cdk/aws-s3';
 import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
-import { BundlingDockerImage, RemovalPolicy, Stack } from '@aws-cdk/core';
+import { DockerImage, RemovalPolicy, Stack } from '@aws-cdk/core';
 import { execSync, ExecSyncOptions } from 'child_process';
 import { copySync } from 'fs-extra';
 import { join } from 'path';
@@ -23,7 +23,7 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
   const bundle = Source.asset(join(__dirname, '../ui'), {
     bundling: {
       command: ['sh', '-c', 'echo "Docker build not supported. Please install esbuild."'],
-      image: BundlingDockerImage.fromRegistry('alpine'),
+      image: DockerImage.fromRegistry('alpine'),
       local: {
         tryBundle(outputDir: string) {
           try {

@@ -139,7 +139,7 @@ exports[`render the app 1`] = `
                     rows="1"
                     style="height: 0px; overflow: hidden;"
                   >
-                    {"permissions":["start_order"],"resource":"/orders","method":"GET","subscriptions":["newsletter"]}
+                    {"permissions":["start_order"],"subscriptions":["newsletter"],"userId":12345}
                   </textarea>
                   <textarea
                     aria-hidden="true"
@@ -193,8 +193,8 @@ allow {
 
 check_policy[input] {
     r = requests[_]
-    some i; match_with_wildcard(data.permissions, input.permissions[i])
-    some j; match_with_wildcard(data.subscriptions, input.subscriptions[j])
+    some i; match_with_wildcard(permissions, input.permissions[i])
+    some j; match_with_wildcard(subscriptions, input.subscriptions[j])
     match_with_wildcard(r.methods, input.method)
     match_with_wildcard(r.resources, input.resource)
 }

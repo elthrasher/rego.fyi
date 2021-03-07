@@ -12,8 +12,8 @@ allow {
 
 check_policy[input] {
     r = requests[_]
-    some i; match_with_wildcard(data.permissions, input.permissions[i])
-    some j; match_with_wildcard(data.subscriptions, input.subscriptions[j])
+    some i; match_with_wildcard(permissions, input.permissions[i])
+    some j; match_with_wildcard(subscriptions, input.subscriptions[j])
     match_with_wildcard(r.methods, input.method)
     match_with_wildcard(r.resources, input.resource)
 }

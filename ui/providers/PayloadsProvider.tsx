@@ -6,9 +6,8 @@ const baseUrl = 'https://api.rego.fyi';
 
 const tokenDefault = JSON.stringify({
   permissions: ['start_order'],
-  resource: '/orders',
-  method: 'GET',
   subscriptions: ['newsletter'],
+  userId: 12345,
 });
 
 export interface Payloads {

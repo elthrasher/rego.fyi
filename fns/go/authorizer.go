@@ -20,7 +20,7 @@ import (
 	"github.com/open-policy-agent/opa/util"
 )
 
-var module string
+var policyName string
 var store storage.Store
 var compiler *ast.Compiler
 var ctx context.Context
@@ -42,17 +42,19 @@ func compileOpaPolicy(module string, data string) {
 
 	store = inmem.NewFromReader(bytes.NewBufferString(data))
 
+	policyName = strings.Split(strings.Split(module, "\n")[0], " ")[1]
+
 	// Parse the module. The first argument is used as an identifier in error messages.
-	parsed, err := ast.ParseModule("policy.rego", module)
+	parsed, err := ast.ParseModule(policyName+".rego", module)
 	if err != nil {
-		// Handle error.
+		log.Println("err:", err)
 	}
 
 	// Create a new compiler and compile the module. The keys are used as
 	// identifiers in error messages.
 	compiler = ast.NewCompiler()
 	compiler.Compile(map[string]*ast.Module{
-		"policy.rego": parsed,
+		policyName + ".rego": parsed,
 	})
 
 	if compiler.Failed() {
@@ -66,7 +68,7 @@ func checkOpaPolicy(method string, permissions []string, resourcePath string, su
 
 	// Create a new query that uses the compiled policy from above.
 	reg := rego.New(
-		rego.Query("data.policy.allow"),
+		rego.Query("data."+policyName+".allow"),
 		rego.Store(store),
 		rego.Compiler(compiler),
 		rego.Input(
