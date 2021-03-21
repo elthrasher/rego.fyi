@@ -1,11 +1,12 @@
 import { ICertificate } from '@aws-cdk/aws-certificatemanager';
 import { Distribution, ViewerProtocolPolicy } from '@aws-cdk/aws-cloudfront';
 import { S3Origin } from '@aws-cdk/aws-cloudfront-origins';
+import { Runtime } from '@aws-cdk/aws-lambda';
 import { ARecord, IHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
 import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
 import { Bucket } from '@aws-cdk/aws-s3';
 import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
-import { AssetHashType, DockerImage, RemovalPolicy, Stack } from '@aws-cdk/core';
+import { AssetHashType, RemovalPolicy, Stack } from '@aws-cdk/core';
 import { execSync, ExecSyncOptions } from 'child_process';
 import { copySync } from 'fs-extra';
 import { join } from 'path';
@@ -20,11 +21,21 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
 
   const execOptions: ExecSyncOptions = { stdio: ['ignore', process.stderr, 'inherit'] };
 
-  const bundle = Source.asset(join(__dirname, '../ui'), {
+  const bundle = Source.asset(join(__dirname, '..'), {
     assetHashType: AssetHashType.OUTPUT,
     bundling: {
-      command: ['sh', '-c', 'echo "Docker build not supported. Please install esbuild."'],
-      image: DockerImage.fromRegistry('alpine'),
+      // command: ['sh', '-c', 'echo "Docker build not supported. Please install esbuild."'],
+      command: [
+        'sh',
+        '-c',
+        [
+          'cp -R /asset-input/esbuild.ts /asset-input/pack* /asset-input/opa /asset-input/ui /asset-input/website /app',
+          'npm ci',
+          'npm run build',
+          'cp -R website/. /asset-output',
+        ].join('&&'),
+      ],
+      image: Runtime.NODEJS_14_X.bundlingDockerImage,
       local: {
         tryBundle(outputDir: string) {
           try {
@@ -37,6 +48,8 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
           return true;
         },
       },
+      user: 'root',
+      workingDirectory: '/app',
     },
   });
 
