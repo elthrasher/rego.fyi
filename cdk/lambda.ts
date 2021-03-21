@@ -1,17 +1,19 @@
 import { Code, Function as LambdaFunction, Runtime } from '@aws-cdk/aws-lambda';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
-import { BundlingDockerImage, Stack } from '@aws-cdk/core';
+import { AssetHashType, Stack } from '@aws-cdk/core';
 import { execSync, ExecSyncOptions } from 'child_process';
 import { join } from 'path';
 
 const getAuthorizer = (stack: Stack): LambdaFunction => {
   const execOptions: ExecSyncOptions = { stdio: ['ignore', process.stderr, 'inherit'] };
-  const goPath = join(__dirname, '../fns/go');
+  const goPath = join(__dirname, '..');
   return new LambdaFunction(stack, 'AuthZFun', {
     code: Code.fromAsset(goPath, {
+      assetHashType: AssetHashType.OUTPUT,
       bundling: {
-        command: ['sh', '-c', 'echo "Docker build not supported. Please install go."'],
-        image: BundlingDockerImage.fromRegistry('alpine'),
+        // command: ['sh', '-c', 'echo "Docker build not supported. Please install go."'],
+        command: ['sh', '-c', 'cd fns/go && GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o /asset-output/main'],
+        image: Runtime.GO_1_X.bundlingDockerImage,
         local: {
           tryBundle(outputDir: string) {
             try {
@@ -21,11 +23,12 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
             }
             execSync(`GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o ${join(outputDir, 'main')}`, {
               ...execOptions,
-              cwd: goPath,
+              cwd: join(goPath, 'fns/go'),
             });
             return true;
           },
         },
+        user: 'root',
       },
     }),
     handler: 'main',
