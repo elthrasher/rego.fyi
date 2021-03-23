@@ -12,7 +12,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
       assetHashType: AssetHashType.OUTPUT,
       bundling: {
         // command: ['sh', '-c', 'echo "Docker build not supported. Please install go."'],
-        command: ['sh', '-c', 'cd fns/go && GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o /asset-output/main'],
+        command: ['sh', '-c', 'GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o /asset-output/main'],
         image: Runtime.GO_1_X.bundlingDockerImage,
         local: {
           tryBundle(outputDir: string) {
@@ -29,6 +29,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
           },
         },
         user: 'root',
+        workingDirectory: '/asset-input/fns/go',
       },
     }),
     handler: 'main',
