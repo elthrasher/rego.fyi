@@ -365,6 +365,13 @@ Object {
           "Aliases": Array [
             "rego.fyi",
           ],
+          "CustomErrorResponses": Array [
+            Object {
+              "ErrorCode": 404,
+              "ResponseCode": 200,
+              "ResponsePagePath": "/index.html",
+            },
+          ],
           "DefaultCacheBehavior": Object {
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
             "Compress": true,

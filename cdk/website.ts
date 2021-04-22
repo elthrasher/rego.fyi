@@ -62,6 +62,7 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
       viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
     },
     domainNames: [domainName],
+    errorResponses: [{ httpStatus: 404, responseHttpStatus: 200, responsePagePath: '/index.html' }],
   });
 
   new BucketDeployment(stack, 'DeployWebsite', {
