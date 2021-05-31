@@ -4,7 +4,7 @@ import { S3Origin } from '@aws-cdk/aws-cloudfront-origins';
 import { Runtime } from '@aws-cdk/aws-lambda';
 import { ARecord, IHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
 import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
-import { Bucket } from '@aws-cdk/aws-s3';
+import { BlockPublicAccess, Bucket } from '@aws-cdk/aws-s3';
 import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 import { AssetHashType, RemovalPolicy, Stack } from '@aws-cdk/core';
 import { execSync, ExecSyncOptions } from 'child_process';
@@ -14,6 +14,7 @@ import { join } from 'path';
 export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZone: IHostedZone): string => {
   const websiteBucket = new Bucket(stack, 'WebsiteBucket', {
     autoDeleteObjects: true,
+    blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
     removalPolicy: RemovalPolicy.DESTROY,
   });
 

@@ -373,6 +373,14 @@ Object {
     },
     "WebsiteBucket75C24D94": Object {
       "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "PublicAccessBlockConfiguration": Object {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true,
+        },
+      },
       "Type": "AWS::S3::Bucket",
       "UpdateReplacePolicy": "Delete",
     },
