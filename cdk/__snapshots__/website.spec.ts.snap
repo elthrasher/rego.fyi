@@ -324,34 +324,32 @@ Object {
             "TargetOriginId": "WebTestStackDistributionOrigin171BA4609",
             "ViewerProtocolPolicy": "redirect-to-https",
           },
+          "DefaultRootObject": "index.html",
           "Enabled": true,
           "HttpVersion": "http2",
           "IPV6Enabled": true,
           "Origins": Array [
             Object {
-              "CustomOriginConfig": Object {
-                "OriginProtocolPolicy": "http-only",
-                "OriginSSLProtocols": Array [
-                  "TLSv1.2",
-                ],
-              },
               "DomainName": Object {
-                "Fn::Select": Array [
-                  2,
-                  Object {
-                    "Fn::Split": Array [
-                      "/",
-                      Object {
-                        "Fn::GetAtt": Array [
-                          "WebsiteBucket75C24D94",
-                          "WebsiteURL",
-                        ],
-                      },
-                    ],
-                  },
+                "Fn::GetAtt": Array [
+                  "WebsiteBucket75C24D94",
+                  "RegionalDomainName",
                 ],
               },
               "Id": "WebTestStackDistributionOrigin171BA4609",
+              "S3OriginConfig": Object {
+                "OriginAccessIdentity": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "origin-access-identity/cloudfront/",
+                      Object {
+                        "Ref": "OriginAccessIdentityDF1E3CAC",
+                      },
+                    ],
+                  ],
+                },
+              },
             },
           ],
           "ViewerCertificate": Object {
@@ -365,13 +363,16 @@ Object {
       },
       "Type": "AWS::CloudFront::Distribution",
     },
-    "WebsiteBucket75C24D94": Object {
-      "DeletionPolicy": "Delete",
+    "OriginAccessIdentityDF1E3CAC": Object {
       "Properties": Object {
-        "WebsiteConfiguration": Object {
-          "IndexDocument": "index.html",
+        "CloudFrontOriginAccessIdentityConfig": Object {
+          "Comment": "Allows CloudFront to reach the bucket",
         },
       },
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+    },
+    "WebsiteBucket75C24D94": Object {
+      "DeletionPolicy": "Delete",
       "Type": "AWS::S3::Bucket",
       "UpdateReplacePolicy": "Delete",
     },
@@ -402,25 +403,6 @@ Object {
         "PolicyDocument": Object {
           "Statement": Array [
             Object {
-              "Action": "s3:GetObject",
-              "Effect": "Allow",
-              "Principal": "*",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    Object {
-                      "Fn::GetAtt": Array [
-                        "WebsiteBucket75C24D94",
-                        "Arn",
-                      ],
-                    },
-                    "/*",
-                  ],
-                ],
-              },
-            },
-            Object {
               "Action": Array [
                 "s3:GetObject*",
                 "s3:GetBucket*",
@@ -433,6 +415,44 @@ Object {
                   "Fn::GetAtt": Array [
                     "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
                     "Arn",
+                  ],
+                },
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "WebsiteBucket75C24D94",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "WebsiteBucket75C24D94",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "CanonicalUser": Object {
+                  "Fn::GetAtt": Array [
+                    "OriginAccessIdentityDF1E3CAC",
+                    "S3CanonicalUserId",
                   ],
                 },
               },

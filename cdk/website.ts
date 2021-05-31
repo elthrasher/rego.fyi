@@ -1,5 +1,5 @@
 import { ICertificate } from '@aws-cdk/aws-certificatemanager';
-import { Distribution, ViewerProtocolPolicy } from '@aws-cdk/aws-cloudfront';
+import { Distribution, OriginAccessIdentity, ViewerProtocolPolicy } from '@aws-cdk/aws-cloudfront';
 import { S3Origin } from '@aws-cdk/aws-cloudfront-origins';
 import { Runtime } from '@aws-cdk/aws-lambda';
 import { ARecord, IHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
@@ -14,10 +14,11 @@ import { join } from 'path';
 export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZone: IHostedZone): string => {
   const websiteBucket = new Bucket(stack, 'WebsiteBucket', {
     autoDeleteObjects: true,
-    publicReadAccess: true,
     removalPolicy: RemovalPolicy.DESTROY,
-    websiteIndexDocument: 'index.html',
   });
+
+  const originAccessIdentity = new OriginAccessIdentity(stack, 'OriginAccessIdentity');
+  websiteBucket.grantRead(originAccessIdentity);
 
   const execOptions: ExecSyncOptions = { stdio: ['ignore', process.stderr, 'inherit'] };
 
@@ -35,7 +36,7 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
           'cp -R website/. /asset-output',
         ].join('&&'),
       ],
-      image: Runtime.NODEJS_14_X.bundlingDockerImage,
+      image: Runtime.NODEJS_14_X.bundlingImage,
       local: {
         tryBundle(outputDir: string) {
           try {
@@ -58,9 +59,10 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
   const distribution = new Distribution(stack, 'Distribution', {
     certificate,
     defaultBehavior: {
-      origin: new S3Origin(websiteBucket),
+      origin: new S3Origin(websiteBucket, { originAccessIdentity }),
       viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
     },
+    defaultRootObject: 'index.html',
     domainNames: [domainName],
     errorResponses: [{ httpStatus: 404, responseHttpStatus: 200, responsePagePath: '/index.html' }],
   });
@@ -78,5 +80,5 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
     target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
   });
 
-  return websiteBucket.bucketWebsiteUrl;
+  return distribution.domainName;
 };

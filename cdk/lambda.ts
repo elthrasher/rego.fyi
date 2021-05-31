@@ -13,7 +13,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
       bundling: {
         // command: ['sh', '-c', 'echo "Docker build not supported. Please install go."'],
         command: ['sh', '-c', 'GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o /asset-output/main'],
-        image: Runtime.GO_1_X.bundlingDockerImage,
+        image: Runtime.GO_1_X.bundlingImage,
         local: {
           tryBundle(outputDir: string) {
             try {
