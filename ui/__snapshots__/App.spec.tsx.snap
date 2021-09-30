@@ -325,7 +325,7 @@ match_with_wildcard(allowed, value) {
               </div>
             </div>
             <div
-              class="MuiCollapse-container MuiCollapse-hidden"
+              class="MuiCollapse-root MuiCollapse-hidden"
               style="min-height: 0px;"
             >
               <div
@@ -396,7 +396,7 @@ match_with_wildcard(allowed, value) {
               </div>
             </div>
             <div
-              class="MuiCollapse-container MuiCollapse-hidden"
+              class="MuiCollapse-root MuiCollapse-hidden"
               style="min-height: 0px;"
             >
               <div
@@ -493,7 +493,7 @@ match_with_wildcard(allowed, value) {
               </div>
             </div>
             <div
-              class="MuiCollapse-container MuiCollapse-hidden"
+              class="MuiCollapse-root MuiCollapse-hidden"
               style="min-height: 0px;"
             >
               <div
@@ -579,7 +579,7 @@ match_with_wildcard(allowed, value) {
               </div>
             </div>
             <div
-              class="MuiCollapse-container MuiCollapse-hidden"
+              class="MuiCollapse-root MuiCollapse-hidden"
               style="min-height: 0px;"
             >
               <div
@@ -650,7 +650,7 @@ match_with_wildcard(allowed, value) {
               </div>
             </div>
             <div
-              class="MuiCollapse-container MuiCollapse-hidden"
+              class="MuiCollapse-root MuiCollapse-hidden"
               style="min-height: 0px;"
             >
               <div
@@ -730,7 +730,7 @@ match_with_wildcard(allowed, value) {
               </div>
             </div>
             <div
-              class="MuiCollapse-container MuiCollapse-hidden"
+              class="MuiCollapse-root MuiCollapse-hidden"
               style="min-height: 0px;"
             >
               <div

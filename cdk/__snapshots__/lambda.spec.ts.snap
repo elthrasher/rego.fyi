@@ -57,6 +57,9 @@ Object {
         "LambdalithFnServiceRoleEAD0A948",
       ],
       "Properties": Object {
+        "Architectures": Array [
+          "arm64",
+        ],
         "Code": Any<Object>,
         "Environment": Object {
           "Variables": Object {

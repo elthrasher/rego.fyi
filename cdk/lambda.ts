@@ -1,4 +1,4 @@
-import { Code, Function as LambdaFunction, Runtime } from '@aws-cdk/aws-lambda';
+import { Architecture, Code, Function as LambdaFunction, Runtime } from '@aws-cdk/aws-lambda';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 import { AssetHashType, Stack } from '@aws-cdk/core';
 import { execSync, ExecSyncOptions } from 'child_process';
@@ -39,6 +39,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
 
 const getLambdalith = (stack: Stack): LambdaFunction =>
   new NodejsFunction(stack, 'LambdalithFn', {
+    architectures: [Architecture.ARM_64],
     entry: `${__dirname}/../fns/ts/lambdalith.ts`,
     runtime: Runtime.NODEJS_14_X,
   });

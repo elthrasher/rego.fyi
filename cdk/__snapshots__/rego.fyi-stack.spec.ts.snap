@@ -422,6 +422,9 @@ Object {
         "LambdalithFnServiceRoleEAD0A948",
       ],
       "Properties": Object {
+        "Architectures": Array [
+          "arm64",
+        ],
         "Code": Any<Object>,
         "Environment": Object {
           "Variables": Object {
@@ -1868,7 +1871,6 @@ Object {
           "Statement": Array [
             Object {
               "Action": Array [
-                "s3:GetObject*",
                 "s3:GetBucket*",
                 "s3:List*",
                 "s3:DeleteObject*",

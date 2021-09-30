@@ -45,7 +45,7 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
           } catch /* istanbul ignore next */ {
             return false;
           }
-          execSync('npm run build', execOptions);
+          execSync('npm run build:website', execOptions);
           copySync(join(__dirname, '../website'), outputDir, { ...execOptions, recursive: true });
           return true;
         },

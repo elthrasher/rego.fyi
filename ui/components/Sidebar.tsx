@@ -3,12 +3,12 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontSize: 12,
   },
