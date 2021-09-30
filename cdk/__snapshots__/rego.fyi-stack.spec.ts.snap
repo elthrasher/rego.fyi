@@ -98,6 +98,9 @@ Object {
         "AuthZFunServiceRoleFC1807CF",
       ],
       "Properties": Object {
+        "Architectures": Array [
+          "arm64",
+        ],
         "Code": Any<Object>,
         "Handler": "main",
         "Role": Object {
@@ -106,7 +109,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "go1.x",
+        "Runtime": "provided.al2",
       },
       "Type": "AWS::Lambda::Function",
     },

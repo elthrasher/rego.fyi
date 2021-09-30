@@ -8,11 +8,12 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
   const execOptions: ExecSyncOptions = { stdio: ['ignore', process.stderr, 'inherit'] };
   const goPath = join(__dirname, '..');
   return new LambdaFunction(stack, 'AuthZFun', {
+    architectures: [Architecture.ARM_64],
     code: Code.fromAsset(goPath, {
       assetHashType: AssetHashType.OUTPUT,
       bundling: {
         // command: ['sh', '-c', 'echo "Docker build not supported. Please install go."'],
-        command: ['sh', '-c', 'GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o /asset-output/main'],
+        command: ['sh', '-c', 'GOARCH=arm64 GOOS=linux go build -ldflags="-s -w" -o /asset-output/bootstrap'],
         image: Runtime.GO_1_X.bundlingImage,
         local: {
           tryBundle(outputDir: string) {
@@ -21,7 +22,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
             } catch /* istanbul ignore next */ {
               return false;
             }
-            execSync(`GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o ${join(outputDir, 'main')}`, {
+            execSync(`GOARCH=arm64 GOOS=linux go build -ldflags="-s -w" -o ${join(outputDir, 'bootstrap')}`, {
               ...execOptions,
               cwd: join(goPath, 'fns/go'),
             });
@@ -33,7 +34,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
       },
     }),
     handler: 'main',
-    runtime: Runtime.GO_1_X,
+    runtime: Runtime.PROVIDED_AL2,
   });
 };
 
