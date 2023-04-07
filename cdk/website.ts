@@ -1,12 +1,12 @@
-import { ICertificate } from '@aws-cdk/aws-certificatemanager';
-import { Distribution, OriginAccessIdentity, ViewerProtocolPolicy } from '@aws-cdk/aws-cloudfront';
-import { S3Origin } from '@aws-cdk/aws-cloudfront-origins';
-import { Runtime } from '@aws-cdk/aws-lambda';
-import { ARecord, IHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
-import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
-import { BlockPublicAccess, Bucket } from '@aws-cdk/aws-s3';
-import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
-import { AssetHashType, RemovalPolicy, Stack } from '@aws-cdk/core';
+import { AssetHashType, RemovalPolicy, Stack } from 'aws-cdk-lib';
+import { ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
+import { Distribution, OriginAccessIdentity, ViewerProtocolPolicy } from 'aws-cdk-lib/aws-cloudfront';
+import { S3Origin } from 'aws-cdk-lib/aws-cloudfront-origins';
+import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import { ARecord, IHostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
+import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
+import { BlockPublicAccess, Bucket } from 'aws-cdk-lib/aws-s3';
+import { BucketDeployment, Source } from 'aws-cdk-lib/aws-s3-deployment';
 import { execSync, ExecSyncOptions } from 'child_process';
 import { copySync } from 'fs-extra';
 import { join } from 'path';
@@ -37,7 +37,7 @@ export const createWebsite = (stack: Stack, certificate: ICertificate, hostedZon
           'cp -R website/. /asset-output',
         ].join('&&'),
       ],
-      image: Runtime.NODEJS_14_X.bundlingImage,
+      image: Runtime.NODEJS_18_X.bundlingImage,
       local: {
         tryBundle(outputDir: string) {
           try {

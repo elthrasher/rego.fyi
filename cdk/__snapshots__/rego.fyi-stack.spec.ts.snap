@@ -44,7 +44,13 @@ Object {
       },
     },
   },
-  "Parameters": Any<Object>,
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
   "Resources": Object {
     "ARecordE7B57761": Object {
       "Properties": Object {
@@ -101,7 +107,7 @@ Object {
         "Architectures": Array [
           "arm64",
         ],
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":"cdk-hnb659fds-assets-123456789-us-east-1","S3Key":"[HASH REMOVED].zip"},
         "Handler": "main",
         "Role": Object {
           "Fn::GetAtt": Array [
@@ -185,9 +191,39 @@ Object {
             Array [
               "arn:",
               Object {
-                "Ref": "AWS::Partition",
+                "Fn::Select": Array [
+                  1,
+                  Object {
+                    "Fn::Split": Array [
+                      ":",
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AuthZFun2B67BA45",
+                          "Arn",
+                        ],
+                      },
+                    ],
+                  },
+                ],
               },
-              ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+              ":apigateway:",
+              Object {
+                "Fn::Select": Array [
+                  3,
+                  Object {
+                    "Fn::Split": Array [
+                      ":",
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AuthZFun2B67BA45",
+                          "Arn",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              ":lambda:path/2015-03-31/functions/",
               Object {
                 "Fn::GetAtt": Array [
                   "AuthZFun2B67BA45",
@@ -213,7 +249,7 @@ Object {
         "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
       ],
       "Properties": Object {
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":"cdk-hnb659fds-assets-123456789-us-east-1","S3Key":"[HASH REMOVED].zip"},
         "Handler": "index.handler",
         "Layers": Array [
           Object {
@@ -226,7 +262,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "python3.6",
+        "Runtime": "python3.9",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -265,7 +301,87 @@ Object {
     "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": Object {
       "Properties": Object {
         "PolicyDocument": Object {
-          "Statement": Any<Array>,
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::cdk-hnb659fds-assets-123456789-us-east-1",
+                    ],
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":s3:::cdk-hnb659fds-assets-123456789-us-east-1/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": Array [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "WebsiteBucket75C24D94",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "WebsiteBucket75C24D94",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            Object {
+              "Action": Array [
+                "cloudfront:GetInvalidation",
+                "cloudfront:CreateInvalidation",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
           "Version": "2012-10-17",
         },
         "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
@@ -282,7 +398,7 @@ Object {
         "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
       ],
       "Properties": Object {
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":"cdk-hnb659fds-assets-123456789-us-east-1","S3Key":"[HASH REMOVED].zip"},
         "Description": Object {
           "Fn::Join": Array [
             "",
@@ -303,7 +419,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs14.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -332,7 +448,7 @@ Object {
     },
     "DeployWebsiteAwsCliLayer17DBC421": Object {
       "Properties": Object {
-        "Content": Any<Object>,
+        "Content": {"S3Bucket":"cdk-hnb659fds-assets-123456789-us-east-1","S3Key":"[HASH REMOVED].zip"},
         "Description": "/opt/awscli/aws",
       },
       "Type": "AWS::Lambda::LayerVersion",
@@ -356,8 +472,12 @@ Object {
             "Arn",
           ],
         },
-        "SourceBucketNames": Any<Array>,
-        "SourceObjectKeys": Any<Object>,
+        "SourceBucketNames": Array [
+          "cdk-hnb659fds-assets-123456789-us-east-1",
+        ],
+        "SourceObjectKeys": Array [
+          "c28803b2fb153e6d1b7134cd85870b16e3ecc229db8476376ba0c4b9c343cd38.zip",
+        ],
       },
       "Type": "Custom::CDKBucketDeployment",
       "UpdateReplacePolicy": "Delete",
@@ -413,7 +533,7 @@ Object {
             "AcmCertificateArn": Object {
               "Ref": "WebsiteCertD0D41D26",
             },
-            "MinimumProtocolVersion": "TLSv1.2_2019",
+            "MinimumProtocolVersion": "TLSv1.2_2021",
             "SslSupportMethod": "sni-only",
           },
         },
@@ -428,7 +548,7 @@ Object {
         "Architectures": Array [
           "arm64",
         ],
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":"cdk-hnb659fds-assets-123456789-us-east-1","S3Key":"[HASH REMOVED].zip"},
         "Environment": Object {
           "Variables": Object {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
@@ -441,7 +561,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -485,6 +605,7 @@ Object {
       "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
     },
     "RegoFyiApiAccountAE6A213F": Object {
+      "DeletionPolicy": "Retain",
       "DependsOn": Array [
         "RegoFyiApiC9E5D65C",
       ],
@@ -497,6 +618,7 @@ Object {
         },
       },
       "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
     },
     "RegoFyiApiApiDomain39F42A0B": Object {
       "Properties": Object {
@@ -534,6 +656,7 @@ Object {
       "Type": "AWS::ApiGateway::RestApi",
     },
     "RegoFyiApiCloudWatchRole4BEF4CFB": Object {
+      "DeletionPolicy": "Retain",
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -563,6 +686,7 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
     },
     "RegoFyiApiDeployment7CE69888f2eb72145333f00fd68c6db9d2a76548": Object {
       "DependsOn": Array [
@@ -589,12 +713,16 @@ Object {
       "Type": "AWS::ApiGateway::Deployment",
     },
     "RegoFyiApiDeploymentStageprod3896E9EC": Object {
+      "DependsOn": Array [
+        "RegoFyiApiAccountAE6A213F",
+      ],
       "Properties": Object {
         "DeploymentId": Object {
           "Ref": "RegoFyiApiDeployment7CE69888f2eb72145333f00fd68c6db9d2a76548",
         },
         "MethodSettings": Array [
           Object {
+            "DataTraceEnabled": false,
             "HttpMethod": "*",
             "ResourcePath": "/*",
             "ThrottlingBurstLimit": 200,
@@ -1842,6 +1970,16 @@ Object {
           "IgnorePublicAcls": true,
           "RestrictPublicBuckets": true,
         },
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:auto-delete-objects",
+            "Value": "true",
+          },
+          Object {
+            "Key": "aws-cdk:cr-owned:9e61d77e",
+            "Value": "true",
+          },
+        ],
       },
       "Type": "AWS::S3::Bucket",
       "UpdateReplacePolicy": "Delete",
@@ -1948,6 +2086,32 @@ Object {
                 },
               ],
             },
+            Object {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": Object {
+                "CanonicalUser": Object {
+                  "Fn::GetAtt": Array [
+                    "OriginAccessIdentityDF1E3CAC",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    Object {
+                      "Fn::GetAtt": Array [
+                        "WebsiteBucket75C24D94",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
           ],
           "Version": "2012-10-17",
         },
@@ -1970,9 +2134,42 @@ Object {
         "SubjectAlternativeNames": Array [
           "api.rego.fyi",
         ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "TestStack/WebsiteCert",
+          },
+        ],
         "ValidationMethod": "DNS",
       },
       "Type": "AWS::CertificateManager::Certificate",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
     },
   },
 }

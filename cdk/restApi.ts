@@ -1,9 +1,15 @@
-import { EndpointType, LambdaIntegration, RequestAuthorizer, RestApi, SecurityPolicy } from '@aws-cdk/aws-apigateway';
-import { ICertificate } from '@aws-cdk/aws-certificatemanager';
-import { Function as LambdaFunction } from '@aws-cdk/aws-lambda';
-import { ARecord, IHostedZone, RecordTarget } from '@aws-cdk/aws-route53';
-import { ApiGateway } from '@aws-cdk/aws-route53-targets';
-import { Duration, Stack } from '@aws-cdk/core';
+import { Duration, Stack } from 'aws-cdk-lib';
+import {
+  EndpointType,
+  LambdaIntegration,
+  RequestAuthorizer,
+  RestApi,
+  SecurityPolicy,
+} from 'aws-cdk-lib/aws-apigateway';
+import { ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
+import { Function as LambdaFunction } from 'aws-cdk-lib/aws-lambda';
+import { ARecord, IHostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
+import { ApiGateway } from 'aws-cdk-lib/aws-route53-targets';
 
 export const createRestApi = (
   stack: Stack,

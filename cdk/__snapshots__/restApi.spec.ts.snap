@@ -26,7 +26,13 @@ Object {
       },
     },
   },
-  "Parameters": Any<Object>,
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
   "Resources": Object {
     "ApiARecordFA826994": Object {
       "Properties": Object {
@@ -58,7 +64,7 @@ Object {
         "Architectures": Array [
           "arm64",
         ],
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":"cdk-hnb659fds-assets-123456789-us-east-1","S3Key":"[HASH REMOVED].zip"},
         "Handler": "main",
         "Role": Object {
           "Fn::GetAtt": Array [
@@ -142,9 +148,39 @@ Object {
             Array [
               "arn:",
               Object {
-                "Ref": "AWS::Partition",
+                "Fn::Select": Array [
+                  1,
+                  Object {
+                    "Fn::Split": Array [
+                      ":",
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AuthZFun2B67BA45",
+                          "Arn",
+                        ],
+                      },
+                    ],
+                  },
+                ],
               },
-              ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+              ":apigateway:",
+              Object {
+                "Fn::Select": Array [
+                  3,
+                  Object {
+                    "Fn::Split": Array [
+                      ":",
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AuthZFun2B67BA45",
+                          "Arn",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              ":lambda:path/2015-03-31/functions/",
               Object {
                 "Fn::GetAtt": Array [
                   "AuthZFun2B67BA45",
@@ -172,7 +208,7 @@ Object {
         "Architectures": Array [
           "arm64",
         ],
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":"cdk-hnb659fds-assets-123456789-us-east-1","S3Key":"[HASH REMOVED].zip"},
         "Environment": Object {
           "Variables": Object {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
@@ -185,7 +221,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -221,6 +257,7 @@ Object {
       "Type": "AWS::IAM::Role",
     },
     "RegoFyiApiAccountAE6A213F": Object {
+      "DeletionPolicy": "Retain",
       "DependsOn": Array [
         "RegoFyiApiC9E5D65C",
       ],
@@ -233,6 +270,7 @@ Object {
         },
       },
       "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
     },
     "RegoFyiApiApiDomain39F42A0B": Object {
       "Properties": Object {
@@ -270,6 +308,7 @@ Object {
       "Type": "AWS::ApiGateway::RestApi",
     },
     "RegoFyiApiCloudWatchRole4BEF4CFB": Object {
+      "DeletionPolicy": "Retain",
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -299,6 +338,7 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
     },
     "RegoFyiApiDeployment7CE69888f2eb72145333f00fd68c6db9d2a76548": Object {
       "DependsOn": Array [
@@ -325,12 +365,16 @@ Object {
       "Type": "AWS::ApiGateway::Deployment",
     },
     "RegoFyiApiDeploymentStageprod3896E9EC": Object {
+      "DependsOn": Array [
+        "RegoFyiApiAccountAE6A213F",
+      ],
       "Properties": Object {
         "DeploymentId": Object {
           "Ref": "RegoFyiApiDeployment7CE69888f2eb72145333f00fd68c6db9d2a76548",
         },
         "MethodSettings": Array [
           Object {
+            "DataTraceEnabled": false,
             "HttpMethod": "*",
             "ResourcePath": "/*",
             "ThrottlingBurstLimit": 200,
@@ -1585,9 +1629,42 @@ Object {
         "SubjectAlternativeNames": Array [
           "api.rego.fyi",
         ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "ApiTestStack/WebsiteCert",
+          },
+        ],
         "ValidationMethod": "DNS",
       },
       "Type": "AWS::CertificateManager::Certificate",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
     },
   },
 }

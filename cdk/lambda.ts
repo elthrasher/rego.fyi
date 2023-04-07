@@ -1,6 +1,6 @@
-import { Architecture, Code, Function as LambdaFunction, Runtime } from '@aws-cdk/aws-lambda';
-import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
-import { AssetHashType, Stack } from '@aws-cdk/core';
+import { AssetHashType, Stack } from 'aws-cdk-lib';
+import { Architecture, Code, Function as LambdaFunction, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { execSync, ExecSyncOptions } from 'child_process';
 import { join } from 'path';
 
@@ -8,7 +8,7 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
   const execOptions: ExecSyncOptions = { stdio: ['ignore', process.stderr, 'inherit'] };
   const goPath = join(__dirname, '..');
   return new LambdaFunction(stack, 'AuthZFun', {
-    architectures: [Architecture.ARM_64],
+    architecture: Architecture.ARM_64,
     code: Code.fromAsset(goPath, {
       assetHashType: AssetHashType.OUTPUT,
       bundling: {
@@ -40,9 +40,9 @@ const getAuthorizer = (stack: Stack): LambdaFunction => {
 
 const getLambdalith = (stack: Stack): LambdaFunction =>
   new NodejsFunction(stack, 'LambdalithFn', {
-    architectures: [Architecture.ARM_64],
+    architecture: Architecture.ARM_64,
     entry: `${__dirname}/../fns/ts/lambdalith.ts`,
-    runtime: Runtime.NODEJS_14_X,
+    runtime: Runtime.NODEJS_18_X,
   });
 
 export const getFns = (stack: Stack): { [fnName: string]: LambdaFunction } => ({

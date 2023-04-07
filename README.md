@@ -6,8 +6,8 @@ Source for [rego.fyi](https://rego.fyi) as a single [AWS CDK](https://aws.amazon
 
 ## Requirements
 
-- NodeJS 14 ([get it](https://nodejs.org/en/))
-- Go 1.16 ([get it](https://golang.org/doc/install))
+- NodeJS 18 ([get it](https://nodejs.org/en/))
+- Go 1.20.3 ([get it](https://golang.org/doc/install))
 - OPA ([get it](https://www.openpolicyagent.org/docs/latest/#running-opa) or [via homebrew](https://formulae.brew.sh/formula/opa))
 
 ## Useful commands

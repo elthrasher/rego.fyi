@@ -2,7 +2,13 @@
 
 exports[`lambda builds get functions 1`] = `
 Object {
-  "Parameters": Any<Object>,
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
   "Resources": Object {
     "AuthZFun2B67BA45": Object {
       "DependsOn": Array [
@@ -12,7 +18,7 @@ Object {
         "Architectures": Array [
           "arm64",
         ],
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":{"Fn::Sub":"cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}"},"S3Key":"[HASH REMOVED].zip"},
         "Handler": "main",
         "Role": Object {
           "Fn::GetAtt": Array [
@@ -63,7 +69,7 @@ Object {
         "Architectures": Array [
           "arm64",
         ],
-        "Code": Any<Object>,
+        "Code": {"S3Bucket":{"Fn::Sub":"cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}"},"S3Key":"[HASH REMOVED].zip"},
         "Environment": Object {
           "Variables": Object {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
@@ -76,7 +82,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -110,6 +116,33 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Role",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
     },
   },
 }

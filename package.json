@@ -32,7 +32,6 @@
     "url": "https://github.com/elthrasher/cdk-esbuild-s3-website"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.125.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.1",
     "@testing-library/react-hooks": "^7.0.2",
@@ -43,7 +42,7 @@
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
-    "aws-cdk": "1.125.0",
+    "aws-cdk": "^2.73.0",
     "esbuild": "^0.13.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -58,21 +57,10 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigateway": "1.125.0",
-    "@aws-cdk/aws-certificatemanager": "1.125.0",
-    "@aws-cdk/aws-cloudfront": "1.125.0",
-    "@aws-cdk/aws-cloudfront-origins": "1.125.0",
-    "@aws-cdk/aws-iam": "1.125.0",
-    "@aws-cdk/aws-lambda": "1.125.0",
-    "@aws-cdk/aws-lambda-nodejs": "1.125.0",
-    "@aws-cdk/aws-logs": "1.125.0",
-    "@aws-cdk/aws-route53": "1.125.0",
-    "@aws-cdk/aws-route53-targets": "1.125.0",
-    "@aws-cdk/aws-s3": "1.125.0",
-    "@aws-cdk/aws-s3-deployment": "1.125.0",
-    "@aws-cdk/core": "1.125.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "aws-cdk-lib": "^2.73.0",
+    "constructs": "^10.1.304",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

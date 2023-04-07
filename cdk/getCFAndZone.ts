@@ -1,6 +1,6 @@
-import { Certificate, CertificateValidation, ICertificate } from '@aws-cdk/aws-certificatemanager';
-import { HostedZone, IHostedZone } from '@aws-cdk/aws-route53';
-import { Stack } from '@aws-cdk/core';
+import { Stack } from 'aws-cdk-lib';
+import { Certificate, CertificateValidation, ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
+import { HostedZone, IHostedZone } from 'aws-cdk-lib/aws-route53';
 
 export const getCertAndZone = (stack: Stack): { certificate: ICertificate; hostedZone: IHostedZone } => {
   const domainName = 'rego.fyi';
